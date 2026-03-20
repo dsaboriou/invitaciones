@@ -1,0 +1,706 @@
+:root {
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --accent-color: #d18d9f;
+    /* Matching the pink from the image */
+    --accent-dark: #b66a90;
+    --bg-color: #ffffff;
+    --font-script: 'Pinyon Script', cursive;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Base layout */
+.app-container {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-color: #fcfaf7;
+    /* Slightly off-white for a natural paper base */
+    min-height: 100vh;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    /* Enable smooth snapping to sections */
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+/* Paper texture effect */
+.app-container::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    /* Reduced opacity to prevent pixelated look */
+    pointer-events: none;
+    z-index: 0;
+    /* Using an ultra-high frequency for a microscopic, delicate grain */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Fixed floral background at the bottom */
+.fixed-floral-bg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('assets/images/flores.webp'), linear-gradient(to top, rgba(252, 250, 247, 1) 0%, rgba(252, 250, 247, 1) 5%, rgba(252, 250, 247, 0) 15%);
+    background-position: bottom center, bottom center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 100% auto, 100% 100%;
+    z-index: 10;
+    /* Put flowers ON TOP of text */
+    pointer-events: none;
+}
+
+/* We removed the overly aggressive top gradient that was hiding the text, 
+   and instead added the white gradient to the background-image below the flowers 
+   so the text vanishes behind a bright white base when at the bottom. */
+
+.content {
+    position: relative;
+    z-index: 1;
+    /* Content is below the fixed flowers */
+}
+
+/* Each slide takes up the viewport vertically */
+.slide {
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 25px;
+    box-sizing: border-box;
+    position: relative;
+    scroll-snap-align: start;
+    overflow: hidden;
+}
+
+/* Vertical spacers to guarantee perfect visual centering above flowers */
+.slide::before {
+    content: "";
+    flex: 1; /* Less top space */
+    width: 100%;
+}
+
+.slide::after {
+    content: "";
+    flex: 3.5; /* Large bottom space to clear the flowers */
+    width: 100%;
+}
+
+
+/* Clean sections without background boxes */
+.text-content {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    padding: 20px 0px;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    box-shadow: none;
+    /* Animation definition */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.text-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Home Section Typography */
+.intro-arch {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    /* Increased for readability */
+    letter-spacing: 4px;
+    /* Slightly reduced tracking for better flow at larger size */
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin: 0 0 12px 0;
+    position: relative;
+    z-index: 2;
+    font-weight: 500;
+}
+
+.creative-overlap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    margin: 10px 0;
+}
+
+.watermark-80 {
+    font-family: var(--font-serif);
+    font-size: 16rem;
+    color: rgba(209, 141, 159, 0.4);
+    /* Darker opacity to make it clearly visible */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+    z-index: 0;
+    user-select: none;
+}
+
+.script-name {
+    font-family: var(--font-script);
+    font-size: 6.5rem;
+    color: var(--accent-color);
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    transform: rotate(-5deg) translateY(10px);
+    /* Romantic tilt, floating gracefully */
+    text-shadow: 1px 1px 2px rgba(252, 250, 247, 0.8), -1px -1px 2px rgba(252, 250, 247, 0.8);
+    /* Refined, smaller glow to prevent masking the numbers behind it */
+}
+
+.years-text {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-style: italic;
+    letter-spacing: 12px;
+    margin-right: -12px;
+    /* Visual compensation for the tracking */
+    color: var(--accent-dark);
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.decorative-leaf {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    opacity: 0.6;
+    margin-bottom: 25px;
+    animation: fadeIn 2s ease;
+}
+
+.luxury-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: 40px 0;
+    width: 100%;
+}
+
+.luxury-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Date Art */
+.date-art {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.day-name {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    /* Balanced with the other card */
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.date-main {
+    display: flex;
+    align-items: baseline;
+    /* Align texts by their baseline for natural flow */
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.day-number {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.date-sep {
+    height: 45px;
+    align-self: center;
+    /* keep separator centered vertically */
+    width: 1px;
+    background: var(--accent-color);
+    opacity: 0.6;
+}
+
+.month {
+    font-family: var(--font-script);
+    font-size: 3rem;
+    color: var(--text-primary);
+    transform: translateY(4px);
+    /* Slight downward nudge to match the baseline of the Serif font */
+}
+
+.time-art {
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--text-primary);
+    /* Dark color for better legibility */
+}
+
+/* Location Art */
+.location-art {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loc-label {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    /* Match day-name */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.loc-name {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin: 5px 0;
+    font-weight: 400;
+    white-space: nowrap; /* Force one line */
+}
+
+@media (max-width: 380px) {
+    .loc-name {
+        font-size: 1.5rem; /* Scale down for very narrow phones */
+    }
+}
+
+.loc-sep {
+    width: 40px;
+    height: 1px;
+    background: var(--accent-color);
+    opacity: 0.4;
+    margin: 15px 0;
+}
+
+.details-divider-vertical {
+    width: 40px;
+    height: 1px;
+    background: var(--accent-color);
+    opacity: 0.2;
+}
+
+@media (min-width: 1024px) {
+    .luxury-details-container {
+        flex-direction: row;
+        justify-content: center;
+        gap: 80px;
+    }
+
+    .details-divider-vertical {
+        width: 1px;
+        height: 120px;
+    }
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--accent-dark);
+    border: 1px solid var(--accent-color);
+    padding: 14px 30px;
+    /* Slightly larger padding */
+    border-radius: 40px;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    /* Increased */
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+/* Dress Code Visual Design */
+.dress-code-visual {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.dress-type {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    letter-spacing: 10px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.dress-sep {
+    width: 60px;
+    height: 1.5px;
+    background: var(--accent-color);
+    margin: 10px 0;
+}
+
+.dress-desc {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: var(--text-secondary);
+}
+
+.dress-desc strong {
+    color: var(--accent-dark);
+}
+
+.spring-palette {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid white;
+    /* White ring to make it pop */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    cursor: help;
+}
+
+.swatch:hover {
+    transform: scale(1.2) translateY(-5px);
+}
+
+.color-rose {
+    background-color: #f4d1d1;
+}
+
+.color-sage {
+    background-color: #d1e4ca;
+}
+
+.color-cream {
+    background-color: #f9f1e0;
+}
+
+.color-sky {
+    background-color: #d1e1f4;
+}
+
+.color-lilac {
+    background-color: #e4d1f4;
+}
+
+.dress-note {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    opacity: 0.8;
+    margin-top: 10px;
+    max-width: 280px;
+}
+
+/* Interactive Scroll indicator */
+.scroll-indicator {
+    margin-top: 35px;
+    animation: bounce 2.5s infinite ease-in-out;
+    opacity: 0.6;
+}
+
+.scroll-indicator p {
+    font-size: 0.8rem;
+    /* Increased */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    color: var(--text-secondary);
+}
+
+.arrow {
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--accent-color);
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Sub-sections Typography */
+.section-title {
+    font-family: var(--font-script);
+    font-size: 3.5rem;
+    color: var(--accent-color);
+    margin: 0 0 0 0;
+    font-weight: 600;
+    /* Bold titles */
+    line-height: 0.8;
+}
+
+.section-subtitle {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    margin: 5px 0 20px 0;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.section-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Form Styles */
+.form-container {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.campo-formulario label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    outline: none;
+    background: rgba(255, 255, 255, 0.6);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 3px rgba(209, 141, 159, 0.15) !important;
+    background: #ffffff !important;
+}
+
+.primary-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 16px 30px;
+    border-radius: 40px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(209, 141, 159, 0.4);
+    width: 100%;
+}
+
+.primary-btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(209, 141, 159, 0.5);
+}
+
+.primary-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 15px rgba(209, 141, 159, 0.3);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.success-message {
+    margin-top: 25px;
+    color: var(--accent-dark);
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-style: italic;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Cinematic Falling Petals */
+#petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    /* Behind the content text but affected by the paper texture */
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: var(--left);
+    top: -10vh;
+    animation: petal-fall var(--fall-duration) linear var(--fall-delay) infinite;
+    opacity: 0;
+    will-change: transform, opacity, top;
+}
+
+@keyframes petal-fall {
+    0% {
+        top: -10vh;
+        opacity: 0;
+        transform: translateX(0) rotate3d(var(--rx), var(--ry), var(--rz), 0deg) scale(var(--scale));
+    }
+
+    10% {
+        opacity: var(--opacity);
+    }
+
+    85% {
+        opacity: var(--opacity);
+    }
+
+    100% {
+        top: 110vh;
+        opacity: 0;
+        transform: translateX(var(--sway)) rotate3d(var(--rx), var(--ry), var(--rz), var(--rotation)) scale(var(--scale));
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+    .fixed-floral-bg {
+        background-image: url('assets/images/florespc.webp'),
+            linear-gradient(to top, rgba(252, 250, 247, 1) 0%, rgba(252, 250, 247, 1) 5%, rgba(252, 250, 247, 0) 15%);
+    }
+
+    /* Side-by-side details on desktop */
+    .luxury-details-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 100px;
+        margin: 60px 0;
+    }
+
+    .luxury-card {
+        flex: 1;
+        max-width: 350px;
+    }
+
+    .details-divider-vertical {
+        width: 1px;
+        height: 150px;
+        margin: 0;
+        opacity: 0.15;
+    }
+
+    /* Common margin for titles to help baseline/top alignment */
+    .luxury-card .section-title {
+        margin-bottom: 20px;
+    }
+
+    #detalles .text-content {
+        max-width: 900px;
+    }
+}

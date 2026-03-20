@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>80 Años de Licinia | Fiesta en el Jardín</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpg" href="assets/images/portada.jpg">
+    <link rel="apple-touch-icon" href="assets/images/portada.jpg">
+
+    <!-- Meta Tags para WhatsApp / Redes Sociales (Open Graph) -->
+    <meta property="og:title" content="80 Años de Licinia | Fiesta en el Jardín">
+    <meta property="og:description" content="Acompáñame a celebrar este día tan especial.">
+    <meta property="og:image" content="assets/images/portada.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://licinia80.com"> <!-- Reemplazar con la URL real cuando se publique -->
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Floating flowers background -->
+        <div class="fixed-floral-bg"></div>
+        <div id="petals-container"></div>
+
+        <main class="content">
+            <!-- Inicio Section -->
+            <section id="home" class="slide">
+                <div class="text-content">
+                    <p class="intro-arch">Acompáñame a celebrar</p>
+
+                    <div class="creative-overlap">
+                        <span class="watermark-80">80</span>
+                        <h2 class="script-name">Licinia</h2>
+                    </div>
+
+                    <p class="years-text">AÑOS</p>
+
+                    <div class="decorative-leaf">✧</div>
+
+                    <div class="scroll-indicator">
+                        <p>Desliza</p>
+                        <div class="arrow">↓</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detalles Section -->
+            <section id="detalles" class="slide">
+                <div class="text-content">
+                    <div class="luxury-details-container">
+
+                        <!-- Date Card -->
+                        <div class="luxury-card">
+                            <h2 class="section-title">Cuándo</h2>
+                            <div class="date-art">
+                                <span class="day-name">Viernes</span>
+                                <div class="date-main">
+                                    <span class="day-number">21</span>
+                                    <div class="date-sep"></div>
+                                    <span class="month">Agosto</span>
+                                </div>
+                                <span class="time-art">5:00 PM</span>
+                            </div>
+                        </div>
+
+                        <div class="details-divider-vertical"></div>
+
+                        <!-- Location Card -->
+                        <div class="luxury-card">
+                            <h2 class="section-title">Dónde</h2>
+                            <div class="location-art">
+                                <span class="loc-label">HOTEL BOUTIQUE</span>
+                                <p class="loc-name">Villa de Los Ángeles</p>
+                                <div class="loc-sep"></div>
+                                <button class="secondary-btn"
+                                    onclick="window.open('https://maps.app.goo.gl/5tjpzRRjiDJwPhd98')">Ver Mapa</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dress Code Section -->
+            <section id="dress-code" class="slide">
+                <div class="text-content">
+                    <h2 class="section-title">Código de Vestimenta</h2>
+
+                    <div class="dress-code-visual">
+                        <div class="dress-type">FORMAL</div>
+                        <div class="dress-sep"></div>
+                        <p class="dress-desc">Sugerimos con cariño vestir en<br><strong>tonos lisos de
+                                primavera</strong></p>
+
+                        <div class="spring-palette">
+                            <div class="swatch color-rose" title="Rosa Pastel"></div>
+                            <div class="swatch color-sage" title="Verde Salvia"></div>
+                            <div class="swatch color-cream" title="Crema"></div>
+                            <div class="swatch color-sky" title="Celeste"></div>
+                            <div class="swatch color-lilac" title="Lila"></div>
+                        </div>
+
+                        <p class="dress-note">Por favor, <strong>evitar estampados</strong> o color totalmente
+                            negro/blanco</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RSVP Section -->
+            <section id="rsvp" class="slide">
+                <div class="text-content">
+                    <h2 class="section-title">Confirmar</h2>
+                    <p class="section-subtitle">Asistencia</p>
+
+
+                    <form id="formulario-rsvp" class="form-container">
+                        <input type="hidden" name="sheetId" value="1mBmMn9etoQyc5RuZWdqdJFo2bFPVhBwMKt0_azc_bpY">
+                        <div class="campo-formulario" id="wrap-campo-1">
+                            <label for="campo-1">Nombre Completo</label>
+                            <input type="text" id="campo-1" name="Nombre Completo" placeholder="Tu Nombre" required>
+                        </div>
+
+                        <button type="submit" id="btn-enviar" class="primary-btn">Confirmar Asistencia</button>
+                    </form>
+
+                    <div id="mensaje-exito" class="success-message" style="display:none;">
+                        ¡Muchas gracias! Tu confirmación se ha guardado correctamente.
+                    </div>
+
+                    <script>
+                    (function() {
+                      document.getElementById('formulario-rsvp').addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        const btn = document.getElementById('btn-enviar');
+                        const msg = document.getElementById('mensaje-exito');
+                        btn.disabled = true;
+                        const originalBtnText = btn.innerText;
+                        btn.innerText = 'Enviando...';
+                        
+                        const formData = new URLSearchParams();
+                        const orden = [];
+
+                        Array.from(this.elements).forEach(el => {
+                          if (!el.name || el.disabled) return;
+                          const wrap = el.closest('.campo-formulario');
+                          if (!wrap || wrap.style.display !== 'none') {
+                            formData.append(el.name, el.value);
+                            if (el.name !== 'sheetId') {
+                              orden.push(el.name);
+                            }
+                          }
+                        });
+
+                        formData.append('ordenPreguntas', orden.join(','));
+
+                        fetch('https://script.google.com/macros/s/AKfycbx0hTDSsoFhO85qmotKrMJwinD-DpU93UfVqD1SlQhw5_saPLXFkSeAINnd7iuYzB8U/exec', {
+                          method: 'POST',
+                          body: formData,
+                          headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                          }
+                        })
+                        .then(res => {
+                          if (!res.ok) throw new Error('Error en el servidor');
+                          this.style.display = 'none';
+                          msg.style.display = 'block';
+                          msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        })
+                        .catch(err => {
+                          console.error('Error RSVP:', err);
+                          alert('Error al enviar. Intenta de nuevo.');
+                          btn.disabled = false;
+                          btn.innerText = originalBtnText;
+                        });
+                      });
+                    })();
+                    </script>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

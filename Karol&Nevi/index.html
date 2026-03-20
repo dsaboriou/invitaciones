@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Karol & Nevi - Nuestra Boda</title>
+    <link rel="stylesheet" href="styles.css?v=20260219">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Cutive+Mono&family=Licorice&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+</head>
+
+<body>
+
+    <header id="hero" class="hero-section">
+        <video autoplay loop muted playsinline class="hero-bg-video">
+            <source src="https://cdn.pixabay.com/video/2024/07/24/222830_large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content-wrapper">
+            <div class="hero-date">18 · 04 · 2026</div>
+            <h1 class="names-signature">
+                <span class="name-part">Karol</span>
+                <span class="ampersand">&amp;</span>
+                <span class="name-part">Nevi</span>
+            </h1>
+            <h2 class="nos-casamos">¡Nos Casamos!</h2>
+            <div class="music-player-container fade-in">
+                <span class="music-title">Escucha Nuestra Canción</span>
+                <div class="music-player">
+                    <div class="player-controls">
+                        <!-- Botón Anterior (solo visual) -->
+                        <button class="player-btn prev-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 4L11 12L19 20V4Z" />
+                                <rect x="5" y="4" width="2" height="16" />
+                            </svg>
+                        </button>
+
+                        <!-- Botón Play/Pause -->
+                        <button id="play-pause-btn" class="player-btn play-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="play-icon">
+                                <path fill-rule="evenodd"
+                                    d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="pause-icon hidden">
+                                <path fill-rule="evenodd"
+                                    d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+
+                        <!-- Botón Siguiente (solo visual) -->
+                        <button class="player-btn next-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M5 4L13 12L5 20V4Z" />
+                                <rect x="17" y="4" width="2" height="16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <audio id="audio-player" src="assets/Cancion.mp3"></audio>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <p class="scroll-text">Desliza hacia abajo</p>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Quote Section -->
+    <section id="quote" class="quote-section">
+        <div class="container fade-in">
+            <div class="quote-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                </svg>
+            </div>
+            <blockquote>
+                "El amor no consiste en mirarse el uno al otro, sino en mirar juntos en la misma dirección."
+            </blockquote>
+            <cite>— ANTOINE DE SAINT-EXUPÉRY</cite>
+        </div>
+    </section>
+
+    <!-- Ceremony & Reception -->
+    <section id="details" class="details-section">
+        <div class="container fade-in">
+            <div class="event-block">
+                <div class="event-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m18 7 4 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9l4-2" />
+                        <path d="M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4" />
+                        <path d="M18 22V5l-6-3-6 3v17" />
+                        <path d="M12 7v5" />
+                        <path d="M10 9h4" />
+                    </svg>
+                </div>
+                <h2>Ceremonia</h2>
+                <p class="event-description">Una hermosa ceremonia religiosa en el corazón de nuestro pueblo.
+                </p>
+                <div class="venue-polaroid church">
+                    <img src="assets/images/iglesia.webp" alt="Parroquia San Miguel Arcángel">
+                </div>
+                <p class="location">Parroquia San Miguel Arcángel</p>
+                <p class="sub-location">Escazú, frente al parque</p>
+                <p class="time">3:00 PM</p>
+                <a href="https://maps.google.com/?q=Parroquia+San+Miguel+Arcangel+Escazu" target="_blank"
+                    class="btn">Ver Mapa</a>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="event-block">
+                <div class="event-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8 22h8" />
+                        <path d="M7 10h10" />
+                        <path d="M12 15v7" />
+                        <path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z" />
+                    </svg>
+                </div>
+                <h2>Recepción</h2>
+                <p class="event-description">Cena, baile y celebración bajo las estrellas de nuestros amados cerros de
+                    Escazú</p>
+                <div class="venue-polaroid reception">
+                    <img src="assets/images/fogo.webp" alt="Fogo Rodizio">
+                </div>
+                <p class="location">Fogo Rodizio</p>
+                <p class="sub-location">San Antonio de Escazú</p>
+                <p class="time">5:00 PM</p>
+                <a href="https://maps.google.com/?q=Fogo+Rodizio+Escazu" target="_blank" class="btn">Ver Mapa</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown -->
+    <section id="countdown" class="countdown-section">
+        <div class="container fade-in">
+
+            <h2>Falta poco para el gran día</h2>
+            <div id="timer" class="timer">
+                <div class="timer-item">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <span class="label">Días</span>
+                    </div>
+                </div>
+                <div class="timer-item">
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <span class="label">Horas</span>
+                    </div>
+                </div>
+                <div class="timer-item">
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <span class="label">Minutos</span>
+                    </div>
+                </div>
+                <div class="timer-item">
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <span class="label">Segundos</span>
+                    </div>
+                </div>
+            </div>
+            <p class="deadline-reminder">Fecha límite para confirmar: <u>1 de marzo</u></p>
+        </div>
+
+        <!-- Mini Polaroid Gallery -->
+        <div class="mini-gallery-container fade-in">
+            <div class="mini-gallery">
+                <div class="polaroid-item item-1">
+                    <img src="assets/images/gallery/Foto1.webp" alt="Foto Karol y Nevi 1">
+                </div>
+                <div class="polaroid-item item-2">
+                    <img src="assets/images/gallery/Foto2.webp" alt="Foto Karol y Nevi 2">
+                </div>
+                <div class="polaroid-item item-3">
+                    <img src="assets/images/gallery/Foto3.webp" alt="Foto Karol y Nevi 3">
+                </div>
+                <div class="polaroid-item item-4">
+                    <img src="assets/images/gallery/Foto4.webp" alt="Foto Karol y Nevi 4">
+                </div>
+                <div class="polaroid-item item-5">
+                    <img src="assets/images/gallery/Foto5.webp" alt="Foto Karol y Nevi 5">
+                </div>
+                <div class="polaroid-item item-6">
+                    <img src="assets/images/gallery/Foto6.webp" alt="Foto Karol y Nevi 6">
+                </div>
+
+                <div class="polaroid-item item-8">
+                    <img src="assets/images/gallery/Foto8.webp" alt="Foto Karol y Nevi 8">
+                </div>
+                <div class="polaroid-item item-9">
+                    <img src="assets/images/gallery/Foto9.webp" alt="Foto Karol y Nevi 9">
+                </div>
+                <div class="polaroid-item item-10">
+                    <img src="assets/images/gallery/Foto10.webp" alt="Foto Karol y Nevi 10">
+                </div>
+                <div class="polaroid-item item-11">
+                    <img src="assets/images/gallery/Foto11.webp" alt="Foto Karol y Nevi 11">
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+
+    <!-- Dress Code -->
+    <section id="dress-code" class="dress-code-section">
+        <div class="container fade-in">
+            <h2>Código de Vestimenta</h2>
+            <p class="description">Queremos que se sientan elegantes, sofisticados y en armonía con la estética de
+                nuestra boda.</p>
+
+            <div class="dress-code-container">
+                <div class="dress-card women">
+                    <div class="card-inner">
+                        <h3>Para ellas</h3>
+                        <p>Elegancia en vestido cocktail o traje de pantalón con blusa formal.</p>
+                    </div>
+                </div>
+                <div class="dress-card men">
+                    <div class="card-inner">
+                        <h3>Para ellos</h3>
+                        <p>Estilo en traje formal o semi-formal, con camisa elegante y corbata opcional.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dress-code-action">
+                <button id="colors-btn" class="btn colors-btn">Ver Colores Permitidos</button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Gifts -->
+    <section id="gifts" class="gifts-section">
+        <div class="container fade-in">
+            <h2>Regalos</h2>
+            <p class="gift-message">Su presencia es el regalo más importante para nosotros.</p>
+            <p class="gift-submessage">Si desean hacernos un obsequio adicional, agradeceremos su apoyo con un aporte
+                económico para nuestro fondo familiar.</p>
+
+            <div class="gift-options">
+                <div class="gift-option sinpe">
+                    <div class="gift-inner">
+                        <h3>SINPE Móvil</h3>
+                        <p class="phone-number" id="sinpe-number">8479-8479</p>
+                        <button id="copy-btn" class="copy-btn" title="Copiar número"
+                            aria-label="Copiar número de SINPE">
+                            <span class="btn-text">Copiar</span>
+                            <span class="btn-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="gift-option cash">
+                    <div class="gift-inner">
+                        <h3>Efectivo</h3>
+                        <p>En sobres el día del evento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Creado por <a href="https://zum.cr/" target="_blank">Zum</a></p>
+    </footer>
+
+    <!-- RSVP Floating Button -->
+    <button id="rsvp-float-btn" class="rsvp-btn">
+        <span>Confirmar Asistencia</span>
+    </button>
+
+    <!-- RSVP Modal -->
+    <div id="rsvp-modal" class="modal">
+        <div class="modal-overlay rsvp-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close rsvp-close">&times;</button>
+            <h3>Confirmación de Asistencia</h3>
+            <p class="modal-deadline">Fecha límite para confirmar: 1 de marzo</p>
+            <div class="deftform" data-form-id="03a2eb90-47b9-4605-b872-5f8f9dc4b920" data-form-width="100%"
+                data-form-align="center" data-form-auto-height="1"></div>
+            <script src="https://cdn.deftform.com/embed.js"></script>
+        </div>
+    </div>
+
+    <!-- Colors Modal -->
+    <div id="colors-modal" class="modal">
+        <div class="modal-overlay colors-overlay"></div>
+        <div class="modal-content colors-modal-content">
+            <button class="modal-close colors-close">&times;</button>
+            <h3>Paleta de colores permitida</h3>
+            <img src="assets/images/ejemplos.webp" alt="Ejemplos de colores permitidos" class="colors-image">
+        </div>
+    </div>
+
+    <script src="script.js?v=20260219"></script>
+</body>
+
+</html>

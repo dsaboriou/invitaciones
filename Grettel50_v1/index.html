@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cumpleaños - Grettel</title>
+
+    <!-- Meta tags for WhatsApp/Social Media -->
+    <meta property="og:title" content="Mi Cumpleaños - Grettel">
+    <meta property="og:description" content="Acompáñame a agradecer y celebrar juntos.">
+    <meta property="og:image" content="assets/portada.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="assets/favicon.webp">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Dancing+Script:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Full-screen Hero -->
+    <header class="v-hero">
+        <video autoplay muted loop playsinline class="v-bg">
+            <source src="assets/video/hero.mp4" type="video/mp4">
+        </video>
+        <div class="v-overlay"></div>
+
+        <div class="v-content">
+            <div class="v-main-card">
+                <span class="v-small">CELEBREMOS MI CUMPLEAÑOS</span>
+                <div class="v-number-wrap">
+                    <h1 class="v-number">Grettel</h1>
+                    <div class="v-sparkles"></div>
+                </div>
+                <p class="v-desc">Acompáñame a agradecer y celebrar juntos.</p>
+                <div class="v-music-wrap">
+                    <button id="v-music-toggle" class="v-music-btn">
+                        <i class="fa-solid fa-music"></i>
+                        <span class="v-music-text">Mi Canción</span>
+                    </button>
+                    <audio id="v-audio-bg" loop>
+                        <source src="assets/cancion.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </div>
+
+        <div class="v-scroll">
+            <span>DESLIZA</span>
+            <div class="v-line"></div>
+        </div>
+    </header>
+
+    <!-- Unified Experience: From Sunset to Night -->
+    <main class="v-unified-experience">
+        <!-- Background Elements -->
+        <div class="v-sun"></div>
+        <div class="v-stars-container"></div>
+
+        <!-- Intro Verse -->
+        <div class="v-narrative v-narrative-top v-visible">
+            <blockquote class="v-bible-verse">
+                <p class="v-verse-text">“Den gracias al Señor porque Él es bueno. Su fiel amor perdura para siempre.”
+                </p>
+                <cite class="v-verse-ref">Salmos 136:1 NTV</cite>
+            </blockquote>
+        </div>
+
+        <!-- Section 1: Event Details (Sunset Atmosphere) -->
+        <section class="v-info-section">
+            <div class="v-container">
+                <div class="v-info-modern-grid">
+                    <!-- CUÁNDO -->
+                    <div class="v-info-item v-info-date">
+                        <div class="v-info-inner">
+                            <span class="v-info-label">CUÁNDO</span>
+                            <div class="v-date-display">
+                                <span class="v-day">25</span>
+                                <div class="v-month-year">
+                                    <span class="v-month">ABRIL</span>
+                                    <span class="v-year">2026</span>
+                                </div>
+                            </div>
+                            <p class="v-time-info">SÁBADO &bull; 4:30 PM</p>
+                        </div>
+                    </div>
+
+                    <!-- DÓNDE -->
+                    <div class="v-info-item v-info-location">
+                        <div class="v-info-inner">
+                            <span class="v-info-label">DÓNDE</span>
+                            <h3 class="v-location-name">Jardín Botánico<br>El Arca</h3>
+                            <div class="v-loc-footer">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Heredia, Costa Rica</span>
+                            </div>
+                            <a href="https://waze.com/ul/hd1u1hsq32" target="_blank" class="v-waze-elegant">
+                                <span>ABRIR EN WAZE</span>
+                                <i class="fa-brands fa-waze"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- VESTIMENTA -->
+                    <div class="v-info-item v-info-dress">
+                        <div class="v-info-inner">
+                            <span class="v-info-label">VESTIMENTA</span>
+                            <h3 class="v-dress-type-new">Formal y Abrigada</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reservation Section -->
+        <div class="v-narrative v-narrative-bridge v-visible">
+            <p class="v-narrative-script">Será un gusto compartir contigo.</p>
+            <div class="v-reservation-minimal">
+                <div class="v-res-divider"></div>
+                <div class="v-res-vertical">
+                    <span class="v-res-lead">He reservado</span>
+                    <div class="v-res-main">
+                        <span class="v-space-number" id="v-guest-count">1</span>
+                        <span class="v-res-tail"><span id="v-guest-text">espacio</span> para ti</span>
+                    </div>
+                </div>
+                <div class="v-res-divider"></div>
+            </div>
+        </div>
+
+        <!-- Section 2: RSVP (Night Atmosphere) -->
+        <section class="v-rsvp-section" id="confirmar">
+            <div class="v-container">
+                <div class="v-rsvp-card-night">
+                    <h2>¿Cuento contigo?</h2>
+                    <p class="v-rsvp-subtitle">Favor confirmar antes del 10 de abril</p>
+
+                    <form id="formulario-rsvp">
+                        <input type="hidden" name="sheetId" value="1ZER4Q8yidiBGumwHrlcarMpoNokAU2kGrE-1fidJJMA">
+                        <div class="campo-formulario" id="wrap-campo-1">
+                            <label for="campo-1">Nombre Completo</label>
+                            <input type="text" id="campo-1" name="Nombre Completo" placeholder="Escribe tu nombre aquí"
+                                required>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="asistencia">¿Asistirás?</label>
+                            <select id="asistencia" name="¿Asistirás?" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="Si">Sí, ¡ahí estaré!</option>
+                                <option value="No">No, esta vez no podré</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-formulario" id="wrap-cantidad" style="display: none;">
+                            <label for="cantidad">¿Cuántas personas asistirán en total?</label>
+                            <input type="number" id="cantidad" name="Cantidad de Invitados" min="1" placeholder="Ej: 1">
+                        </div>
+                        <button type="submit" id="btn-enviar" class="v-btn-sumbit-night">Confirmar</button>
+                    </form>
+
+                    <div id="mensaje-exito" class="v-success-msg">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <p>¡Muchas gracias! Me hace muy feliz saber que me acompañarás.</p>
+                    </div>
+                </div>
+
+                <!-- Contact Grid for Questions -->
+                <div class="v-contact-grid v-reveal">
+                    <p class="v-contact-title">Si tienes alguna duda puedes comunicarte con</p>
+                    <div class="v-contact-items">
+                        <a href="https://wa.me/50687301187" target="_blank" class="v-contact-btn">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <div class="v-contact-info">
+                                <span class="v-contact-name">Susana Reyes</span>
+                                <span class="v-contact-number">8730-1187</span>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/50688266394" target="_blank" class="v-contact-btn">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <div class="v-contact-info">
+                                <span class="v-contact-name">Rosaura Reyes</span>
+                                <span class="v-contact-number">8826-6394</span>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="v-final-greeting">¡Te esperamos!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Horizon + Fireplace -->
+        <div class="v-horizon-scene">
+            <!-- Ground / Landscape silhouette -->
+            <div class="v-horizon">
+                <svg class="v-horizon-svg" viewBox="0 0 1440 500" preserveAspectRatio="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <!-- Far hills (tallest, back layer) -->
+                    <path
+                        d="M0,350 Q120,200 280,280 Q440,360 600,220 Q760,80 920,230 Q1080,360 1240,230 Q1360,140 1440,220 L1440,500 L0,500 Z"
+                        fill="#111a24" opacity="0.85" />
+                    <!-- Mid hills -->
+                    <path
+                        d="M0,390 Q200,300 400,350 Q600,410 800,330 Q1000,245 1200,330 Q1350,385 1440,350 L1440,500 L0,500 Z"
+                        fill="#0a0f14" />
+                    <!-- Ground strip -->
+                    <path d="M0,455 Q400,440 800,450 Q1200,460 1440,445 L1440,500 L0,500 Z" fill="#060b0f" />
+                </svg>
+            </div>
+
+            <!-- Campfire sitting on the horizon -->
+            <div class="v-fire-container">
+                <div class="v-campfire">
+                    <div class="v-log v-log-left"></div>
+                    <div class="v-log v-log-right"></div>
+                    <div class="v-log v-log-center"></div>
+                    <div class="v-flames">
+                        <div class="v-flame v-flame-1"></div>
+                        <div class="v-flame v-flame-2"></div>
+                        <div class="v-flame v-flame-3"></div>
+                        <div class="v-flame v-flame-4"></div>
+                        <div class="v-flame v-flame-5"></div>
+                        <div class="v-flame v-flame-core"></div>
+                    </div>
+                    <div class="v-embers">
+                        <span class="v-ember"></span>
+                        <span class="v-ember"></span>
+                        <span class="v-ember"></span>
+                        <span class="v-ember"></span>
+                        <span class="v-ember"></span>
+                        <span class="v-ember"></span>
+                        <span class="v-ember"></span>
+                        <span class="v-ember"></span>
+                    </div>
+                    <div class="v-fire-glow"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="v-footer-night">
+        <p>Creada por <a href="https://zum.cr/" target="_blank" class="v-footer-link">Zum</a></p>
+    </footer>
+
+    <script src="index.js"></script>
+    <script>
+        (function () {
+            const form = document.getElementById('formulario-rsvp');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const btn = document.getElementById('btn-enviar');
+                    const msg = document.getElementById('mensaje-exito');
+                    btn.disabled = true;
+                    btn.innerText = 'Enviando...';
+
+                    const formData = new URLSearchParams();
+                    const orden = [];
+
+                    Array.from(this.elements).forEach(el => {
+                        if (!el.name || el.disabled) return;
+                        formData.append(el.name, el.value);
+                        if (el.name !== 'sheetId') orden.push(el.name);
+                    });
+
+                    formData.append('ordenPreguntas', orden.join(','));
+
+                    fetch('https://script.google.com/macros/s/AKfycbx0hTDSsoFhO85qmotKrMJwinD-DpU93UfVqD1SlQhw5_saPLXFkSeAINnd7iuYzB8U/exec', {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                    })
+                        .then(res => {
+                            if (!res.ok) throw new Error('Error');
+                            this.style.display = 'none';
+                            msg.style.display = 'block';
+                            msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        })
+                        .catch(() => {
+                            alert('Error al enviar. Intenta de nuevo.');
+                            btn.disabled = false;
+                            btn.innerText = 'Confirmar Asistencia';
+                        });
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>

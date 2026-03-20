@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda - Ingrid & Danny</title>
+    <meta name="description" content="Acompáñanos a celebrar nuestra unión.">
+
+    <!-- Open Graph (WhatsApp, Facebook, etc) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nuestra Boda - Ingrid & Danny">
+    <meta property="og:description" content="Acompáñanos a celebrar nuestra unión.">
+    <!-- NOTA: Para que funcione correctamente en WhatsApp, la imagen suele requerir la URL completa del sitio al desplegarse -->
+    <meta property="og:image" content="assets/images/portada.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Global Paper Texture Overlay -->
+    <div class="paper-texture-overlay"></div>
+
+    <!-- Falling Petals Container -->
+    <div id="petals-container"></div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content reveal active">
+            <img src="assets/images/hero.webp" class="hero-drawing" alt="dibujo nupcial">
+            <h1>Ingrid & Danny</h1>
+            <span class="script hero-phrase">¡Nos Casamos!</span>
+
+            <div class="music-control">
+                <button id="music-btn" class="music-btn" aria-label="Reproducir música">
+                    <i data-lucide="music" class="music-icon"></i>
+                    <div class="music-bars">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                </button>
+                <audio id="bg-music" loop>
+                    <source src="assets/cancion.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>desliza</span>
+            <div class="scroll-arrow">
+                <i data-lucide="chevron-down"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- First Phrase & Date & Countdown -->
+    <section class="reveal date-countdown-section">
+
+        <div class="luxury-date">
+            <div class="luxury-date-top">Sábado</div>
+            <div class="luxury-date-middle">
+                <span class="ld-month">Mayo</span>
+                <span class="ld-day">23</span>
+                <span class="ld-year">2026</span>
+            </div>
+            <div class="luxury-date-bottom">
+                <i data-lucide="clock" class="ld-icon"></i>
+                <span>5:00 PM</span>
+            </div>
+        </div>
+
+        <div class="countdown-wrapper">
+            <p class="countdown-intro">Faltan</p>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span id="days" class="countdown-number">00</span>
+                    <span class="countdown-label">Días</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours" class="countdown-number">00</span>
+                    <span class="countdown-label">Horas</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes" class="countdown-number">00</span>
+                    <span class="countdown-label">Min</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds" class="countdown-number">00</span>
+                    <span class="countdown-label">Seg</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section: Dress Code & Location -->
+    <section class="reveal details-section">
+        <div class="details-container">
+            <!-- Vestimenta -->
+            <div class="dress-code-frame">
+                <div class="dress-code-content">
+                    <div class="section-icon-top">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h2 class="serif">Vestimenta</h2>
+                    <p class="dress-code-intro">Nos encantaría que nos acompañes con tu mejor gala</p>
+                    <div class="dress-code-divider">
+                        <span class="dot"></span>
+                        <span class="line"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <p class="dress-code-text">Casual o Formal</p>
+                </div>
+            </div>
+
+            <!-- Ubicación -->
+            <div class="dress-code-frame location-frame">
+                <div class="dress-code-content">
+                    <div class="section-icon-top">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h2 class="serif">Ubicación</h2>
+                    <p class="dress-code-intro">¡Acompáñanos!</p>
+                    <div class="dress-code-divider">
+                        <span class="dot"></span>
+                        <span class="line"></span>
+                        <span class="dot"></span>
+                    </div>
+
+                    <a href="https://maps.google.com/?q=9.889570,-84.141121" target="_blank" class="btn-map">
+                        <i class="fa-solid fa-map-location-dot" style="margin-right: 10px;"></i>
+                        Ver en mapa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="reveal rsvp-section">
+        <div class="rsvp-container">
+            <div class="rsvp-frame">
+                <div class="dress-code-content">
+                    <div class="section-icon-top">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <h2 class="serif">Confirmación</h2>
+                    <p class="dress-code-intro" style="white-space: normal;">Por favor, infórmanos si podrás
+                        acompañarnos antes del 23 de abril.</p>
+                    <div class="dress-code-divider">
+                        <span class="dot"></span>
+                        <span class="line"></span>
+                        <span class="dot"></span>
+                    </div>
+
+                    <form id="formulario-rsvp" class="rsvp-form">
+                        <input type="hidden" name="sheetId" value="1zf7Nwh8qiI4nBm4lHWXX2QJ_bl8K8v17u8SvoNlKM5k">
+                        <div class="campo-formulario" id="wrap-campo-1">
+                            <label for="campo-1">Nombre Completo</label>
+                            <input type="text" id="campo-1" name="Nombre Completo" required
+                                placeholder="Escribe tu nombre aquí">
+                        </div>
+
+                        <button type="submit" id="btn-enviar" class="btn-rsvp">
+                            <span>Confirmar Asistencia</span>
+                        </button>
+                    </form>
+
+                    <div id="mensaje-exito" class="success-message" style="display:none;">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <p>¡Muchas gracias! Tu confirmación se ha guardado correctamente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Final Footer Message -->
+    <footer>
+        <div style="margin-bottom: 1.5rem; color: var(--secondary-color); font-size: 0.8rem; opacity: 0.5;">
+            <i class="fa-solid fa-heart"></i>
+        </div>
+        <p class="script" style="font-size: 2.2rem; color: var(--primary-color);">
+            "Nuestra Unión tiene un pedacito de cada uno de ustedes"
+        </p>
+
+        <!-- Gallery Section -->
+        <div class="footer-gallery">
+            <div class="gallery-track">
+                <img src="assets/images/gallery/Foto1.webp" alt="Pareja 1">
+                <img src="assets/images/gallery/Foto2.webp" alt="Pareja 2">
+                <img src="assets/images/gallery/Foto3.webp" alt="Pareja 3">
+                <img src="assets/images/gallery/Foto4.webp" alt="Pareja 4">
+                <img src="assets/images/gallery/Foto5.webp" alt="Pareja 5">
+                <img src="assets/images/gallery/Foto6.webp" alt="Pareja 6">
+                <img src="assets/images/gallery/Foto7.webp" alt="Pareja 7">
+                <img src="assets/images/gallery/Foto8.webp" alt="Pareja 8">
+                <!-- Duplicate for seamless loop -->
+                <img src="assets/images/gallery/Foto1.webp" alt="Pareja 1">
+                <img src="assets/images/gallery/Foto2.webp" alt="Pareja 2">
+                <img src="assets/images/gallery/Foto3.webp" alt="Pareja 3">
+                <img src="assets/images/gallery/Foto4.webp" alt="Pareja 4">
+                <img src="assets/images/gallery/Foto5.webp" alt="Pareja 5">
+                <img src="assets/images/gallery/Foto6.webp" alt="Pareja 6">
+                <img src="assets/images/gallery/Foto7.webp" alt="Pareja 7">
+                <img src="assets/images/gallery/Foto8.webp" alt="Pareja 8">
+            </div>
+        </div>
+
+        <!-- Créditos -->
+        <div
+            style="margin-top: 4rem; opacity: 0.3; font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 1px;">
+            Creada por <a href="https://zum.cr/" target="_blank"
+                style="color: inherit; text-decoration: none; font-weight: 600;">Zum</a>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
