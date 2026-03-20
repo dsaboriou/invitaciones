@@ -1,0 +1,90 @@
+/* ... existing code ... */
+
+/* Animated Leaves */
+.leaf {
+    position: absolute;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+    /* Behind content but visible on bg */
+    transform-origin: bottom left;
+    animation: leafSway 4s ease-in-out infinite alternate;
+    width: 150px;
+    /* Base size */
+}
+
+@keyframes leafSway {
+    0% {
+        transform: rotate(-5deg) translateY(0);
+    }
+
+    100% {
+        transform: rotate(5deg) translateY(-5px);
+    }
+}
+
+/* Right side leaves - flipped */
+.leaf-right {
+    right: -30px;
+    /* Hide cut edge */
+    transform-origin: bottom right;
+    /* Adjust for flip */
+    /* We need to flip it horizontally. If we use scaleX(-1), 
+       transform-origin changes. 
+       Let's use a wrapper or apply scaleX to the image itself?
+       Or just use scaleX(-1) in the transform. 
+       If we use scaleX(-1), the animation rotation direction is also flipped visually.
+    */
+    animation-name: leafSwayRight;
+}
+
+@keyframes leafSwayRight {
+    0% {
+        transform: scaleX(-1) rotate(-5deg) translateY(0);
+    }
+
+    100% {
+        transform: scaleX(-1) rotate(5deg) translateY(-5px);
+    }
+}
+
+.leaf-left {
+    left: -30px;
+    /* Hide cut edge */
+}
+
+/* Variations */
+.leaf:nth-child(odd) {
+    width: 120px;
+    animation-duration: 5s;
+    animation-delay: 0.5s;
+}
+
+.leaf:nth-child(even) {
+    width: 180px;
+    animation-duration: 6s;
+    animation-delay: 1s;
+}
+
+.leaf:nth-child(3n) {
+    width: 100px;
+    animation-duration: 4.5s;
+    transform: rotate(10deg);
+    /* Initial offset? cancel with animation */
+}
+
+/* Specific leaf positioning in sections */
+/* We will likely use inline styles or helper classes for `top` */
+
+/* Make sure containers clip correctly if needed, or let them overflow */
+.hero,
+.event-info-section,
+.details-section,
+.gifts-section {
+    position: relative;
+    /* overflow: hidden;  <-- Might cut off the leaves if they are on the edge. 
+       User said "un poco más allá de los bordes". 
+       If we want them to hang *out* of the container, we need overflow visible. 
+       BUT body has overflow-x hidden, so it should be fine. 
+    */
+}

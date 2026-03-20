@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anderson & Nancy - Nuestra Boda</title>
+    <link rel="icon" type="image/svg+xml"
+        href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23aeb297"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'>
+
+    <!-- Fonts: Cormorant Garamond (Heading) & Montserrat (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Montserrat:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="assets/hero.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+        </video>
+        <div class="hero-layer"></div> <!-- Extra overlay layer if needed -->
+        <div class="hero-overlay"></div>
+        <div class="hero-content reveal-up">
+            <p class="hero-intro">NOS CASAMOS</p>
+            <h1 class="hero-names">Anderson <span
+                    style="font-size: 0.6em; vertical-align: middle; font-style: italic;">&</span> Nancy</h1>
+            <p class="hero-verse">
+                “Si uno está solo, lo pueden atacar; pero acompañado, podrá resistir y si el hilo es triple, no se
+                cortará fácilmente”
+            </p>
+            <p class="hero-verse-ref">ECLESIASTÉS 4:12</p>
+        </div>
+
+        <div class="scroll-arrows">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="music-control" id="music-btn">
+            <span class="music-text" style="font-size: 0.8rem; font-weight: 500; letter-spacing: 1px;">Escucha nuestra
+                canción</span>
+            <div class="music-bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Spiritual Message 1 Removed (Moved to Hero) -->
+
+
+
+    <!-- Spiritual Message 2 & Countdown -->
+    <section class="section">
+        <div class="container quote-box reveal-up">
+            <!-- Date Banner -->
+            <div class="date-banner">
+                <div class="db-month">ABRIL</div>
+                <div class="db-row">
+                    <div class="db-side">
+                        <span class="db-line"></span>
+                        <span class="db-text">SÁBADO</span>
+                        <span class="db-line"></span>
+                    </div>
+                    <div class="db-number">18</div>
+                    <div class="db-side">
+                        <span class="db-line"></span>
+                        <span class="db-text">2026</span>
+                        <span class="db-line"></span>
+                    </div>
+                </div>
+                <div class="db-time">3:00 PM</div>
+            </div>
+
+            <h2 class="bible-verse">“Y ya no son dos, sino una sola carne”</h2>
+            <p class="verse-ref">MATEO 19:6</p>
+
+            <!-- Countdown -->
+            <div class="countdown-container" id="countdown" style="margin-top: 50px;">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Días</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Horas</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Mins</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Segs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itinerary -->
+    <section class="timeline-section">
+        <div class="container reveal-up">
+            <div class="text-center">
+                <h2 class="display-text">Itinerario</h2>
+            </div>
+
+            <div class="timeline">
+                <!-- 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="t-time">3:00 PM</span>
+                        <h4 class="t-event">Ceremonia Católica</h4>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="t-time">5:00 PM</span>
+                        <h4 class="t-event">Recepción</h4>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="t-time">5:15 PM</span>
+                        <h4 class="t-event">Café de Bienvenida</h4>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="t-time">5:30 PM</span>
+                        <h4 class="t-event">Momento Especial</h4>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="t-time">6:30 PM</span>
+                        <h4 class="t-event">Cena</h4>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="t-time">7:30 PM</span>
+                        <h4 class="t-event">Momento Especial</h4>
+                    </div>
+                </div>
+                <!-- 7 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="t-time">8:00 PM</span>
+                        <h4 class="t-event">Fiesta</h4>
+                    </div>
+                </div>
+                <!-- 8 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="t-time">10:30 PM</span>
+                        <h4 class="t-event">Cierre</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations -->
+    <section class="section locations-section">
+        <div class="container reveal-up">
+
+
+            <div class="locations-wrapper">
+                <!-- Ceremony -->
+                <div class="location-col text-right">
+                    <h2 class="display-text" style="margin-bottom: 30px;">Ceremonia</h2>
+                    <div class="loc-icon-large">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <p class="loc-address">Parroquia SJ Palmares</p>
+                    <a href="https://maps.app.goo.gl/gYdEdnY2NX8A5k7j8" target="_blank" class="btn-outline">
+                        <i class="fas fa-map-marker-alt"></i> Ver Mapa
+                    </a>
+                    <p class="loc-note">* Por favor ocupar los asientos delanteros</p>
+                </div>
+
+                <!-- Divider -->
+                <div class="loc-divider"></div>
+
+                <!-- Reception -->
+                <div class="location-col text-left">
+                    <h2 class="display-text" style="margin-bottom: 30px;">Recepción</h2>
+                    <div class="loc-icon-large">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <p class="loc-address">Territorio Verde</p>
+                    <a href="https://maps.app.goo.gl/97ky6m8RP5oYWdrbA" target="_blank" class="btn-outline">
+                        <i class="fas fa-map-marker-alt"></i> Ver Mapa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dress Code -->
+    <section class="dress-code-section section">
+        <div class="container reveal-up">
+            <div class="text-center" style="margin-bottom: 40px;">
+                <h2 class="display-text">Código de Vestimenta</h2>
+            </div>
+
+            <div class="locations-grid">
+                <div class="glass-card text-center">
+                    <h3 style="margin-bottom: 15px;">Mujeres</h3>
+                    <p><strong>Estilo Natural</strong></p>
+                    <p>Colores pasteles</p>
+                    <div class="palette-container">
+                        <span class="palette-circle p-women-1"></span>
+                        <span class="palette-circle p-women-2"></span>
+                        <span class="palette-circle p-women-3"></span>
+                        <span class="palette-circle p-women-4"></span>
+                        <span class="palette-circle p-women-5"></span>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; text-transform: uppercase;">
+                        Colores Reservados (<strong>no usar</strong>):<br>
+                        blanco, negro, rojo
+                    </p>
+                </div>
+
+                <div class="glass-card text-center">
+                    <h3 style="margin-bottom: 15px;">Hombres</h3>
+                    <p><strong>Camisas Estilo Casual</strong></p>
+                    <p>Tonos claros: beige, café, gris</p>
+                    <div class="palette-container">
+                        <span class="palette-circle p-men-1"></span>
+                        <span class="palette-circle p-men-2"></span>
+                        <span class="palette-circle p-men-3"></span>
+                        <span class="palette-circle p-men-4"></span>
+                        <span class="palette-circle p-men-5"></span>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; text-transform: uppercase;">
+                        Colores Reservados (<strong>no usar</strong>):<br>
+                        azul
+                    </p>
+                </div>
+            </div>
+            <p style="max-width: 700px; margin: 30px auto 0; font-size: 0.95rem; opacity: 0.9; text-align: center;">
+                Si contás con prendas en estos tonos, nos encantaría que las uses para acompañarnos en este día tan
+                especial. Y si no, no te preocupes, lo más importante es tu presencia.
+            </p>
+        </div>
+    </section>
+
+    <!-- Gifts -->
+    <section class="section">
+        <div class="container text-center reveal-up">
+            <h2 class="display-text" style="margin-bottom: 5px;">Regalos</h2>
+            <p style="font-size: 1.1rem; opacity: 0.9; font-style: italic; margin-bottom: 30px;">
+                "Su presencia es nuestro mejor regalo"
+            </p>
+
+            <div class="gift-card">
+                <h3 class="gift-title">Lluvia de Sobres</h3>
+                <p class="gift-subtitle">Buzón en recepción</p>
+                <!-- Divider removed -->
+            </div>
+
+            <p style="max-width: 600px; margin: 0 auto; font-size: 0.95rem; opacity: 0.8;">
+                Si desean tener un detalle con nosotros, agradecemos su aporte a nuestra lluvia de sobres.
+            </p>
+        </div>
+    </section>
+
+    <!-- Confirmation -->
+    <section class="confirmation-box">
+        <div class="container reveal-up">
+            <h2 class="display-text">Confirmación</h2>
+            <p id="confirm-message">Si estás recibiendo esta invitación es porque has sido parte de momentos importantes
+                de nuestras
+                vidas.<br>Gracias por acompañarnos.</p>
+            <p id="confirm-date" style="font-weight: 500; font-size: 1.1rem; margin-top: 20px;">Por favor confirmar
+                antes del 21 de
+                febrero</p>
+
+            <!-- Deftform Embed -->
+            <div style="margin-top: 30px; background: white; padding: 20px; border-radius: 10px;">
+                <div class="deftform" data-form-id="229ceba0-2b92-4572-a2f5-d82bfe5481f9" data-form-width="100%"
+                    data-form-align="center" data-form-auto-height="1"></div>
+                <script src="https://cdn.deftform.com/embed.js"></script>
+            </div>
+
+            <p id="confirm-footer-message" style="margin-top: 30px; font-size: 1rem;">
+                Cada invitación es única e intransferible, debido a los espacios limitados.<br>Amamos a los niños, pero
+                en esta ocasión el evento es <strong>exclusivo para adultos</strong>.<br><br>¡Gracias por su comprensión
+                y esperamos disfrutar juntos una experiencia maravillosa!
+            </p>
+        </div>
+    </section>
+
+
+
+    <footer style="text-align: center; padding: 20px; background: #222; color: #666; font-size: 0.8rem;">
+        <p style="margin: 0;">Creado por <a href="https://zum.cr/" target="_blank"
+                style="color: #888; text-decoration: none;">zum.cr</a></p>
+    </footer>
+
+    <!-- Music Player -->
+    <audio id="bg-music" loop>
+        <source src="assets/cancion.mp3" type="audio/mpeg">
+    </audio>
+
+
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1191 @@
+:root {
+    --blanco-hueso: #F8F7F3;
+    --verde-oliva-claro: #C9D5B5;
+    --sage-green: #A7B89F;
+    --madera-suave: #D8BBA5;
+    --terracota-claro: hsl(21, 51%, 68%);
+    --gris-calido: #E5E2DD;
+    --text-color: #4a4a4a;
+    --heading-font: 'Playfair Display', serif;
+    --body-font: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: #F6F3EB;
+    /* Slightly warmer/darker paper base */
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ... headers ... */
+h1,
+h2,
+h3 {
+    font-family: var(--heading-font);
+    font-weight: 700;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    /* Ensure content sits above texture if needed */
+    z-index: 2;
+}
+
+.paper-texture {
+    position: fixed;
+    top: -50vh;
+    left: -50vw;
+    width: 200vw;
+    height: 200vh;
+    width: 200dvw;
+    height: 200dvh;
+    /* Massive overlay to prevent any cutoff */
+    background-image: url("https://www.transparenttextures.com/patterns/cardboard-flat.png");
+    background-repeat: repeat;
+    opacity: 0.65;
+    z-index: 9999;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    filter: contrast(120%) brightness(95%);
+    transform: translate3d(0, 0, 0);
+    /* HW acceleration */
+}
+
+/* Hero Section */
+.hero {
+    height: 80vh;
+    /* Reduced from 85vh */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Align content to bottom */
+    padding-bottom: 8rem;
+    text-align: center;
+    position: relative;
+    color: white;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40vh;
+    /* Increased for smoother transition */
+    background: linear-gradient(to bottom, rgba(249, 248, 246, 0) 0%, #F9F8F6 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Center Top Date */
+.hero-top-date {
+    position: absolute;
+    top: 6rem;
+    /* Moved down */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Subtitle Style Match - Updated Size */
+    font-family: var(--heading-font);
+    font-size: 2rem;
+    /* Increased from 1.2rem */
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    color: #4a4a4a;
+    font-weight: 300;
+    z-index: 10;
+}
+
+.names {
+    font-size: 4rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: 400;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    font-weight: 300;
+}
+
+/* Spotify Style Player */
+.spotify-player {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    /* Matching .message-text spacing */
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+/* Heart Button */
+.heart-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.3s;
+    display: block;
+    margin: 0 0 0.2rem auto;
+    /* Top 0, Right 0, Bottom 0.2rem, Left Auto (pushes right) */
+}
+
+.heart-btn:hover {
+    color: var(--terracota-claro);
+    transform: scale(1.1);
+}
+
+.heart-btn.active {
+    color: #e74c3c;
+    /* Red color for active state */
+    animation: pulse 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Row 2 & 3: Progress Area */
+.progress-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 13px;
+    background-color: #A7B89F;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    /* Increase hit area */
+    padding: 6px 0;
+    background-clip: content-box;
+}
+
+.progress-fill {
+    height: 4px;
+    width: 0%;
+    background-color: #A7B89F;
+    border-radius: 2px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    opacity: 1;
+    /* Always visible in this style */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s;
+}
+
+.progress-bar:hover .progress-fill::after {
+    transform: translateY(-50%) scale(1.2);
+}
+
+.time-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-color);
+    font-family: var(--body-font);
+}
+
+/* Row 4: Controls */
+.controls-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 0.5rem;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.control-btn:hover {
+    color: var(--terracota-claro);
+    transform: scale(1.1);
+}
+
+.play-btn-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    border: none;
+    color: white;
+    /* Contrast icon */
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding-left: 4px;
+    /* Optical center for play icon */
+}
+
+/* Adjust for pause icon centering */
+.play-btn-circle i.fa-pause {
+    margin-left: -4px;
+    /* Reset optical shift */
+}
+
+.play-btn-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+
+
+
+
+/* Event Info Section (Message + Date + Countdown) */
+.event-info-section {
+    padding: 0 0 6rem 0;
+    /* Removed top padding */
+    text-align: center;
+    background-color: #F9F8F6;
+    /* Updated specific color */
+    color: #4a4a4a;
+    /* Dark text for contrast */
+}
+
+.message-text {
+    font-size: 1.4rem;
+    font-family: var(--heading-font);
+    font-style: italic;
+    color: #4a4a4a;
+    /* Dark text */
+    max-width: 600px;
+    margin: 0 auto 4rem auto;
+}
+
+/* Date Layout - Horizontal Elegant Design */
+.date-layout {
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.date-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-family: var(--heading-font);
+}
+
+.date-item {
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 300;
+}
+
+.date-item.day-highlight {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+}
+
+.day-month-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.day-number {
+    font-size: 5rem;
+    font-weight: 400;
+    line-height: 1;
+    color: white;
+    font-family: var(--heading-font);
+}
+
+.month-name {
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 300;
+    font-family: var(--heading-font);
+}
+
+.date-separator {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
+}
+
+/* Updated Countdown Styles */
+.countdown-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #C9D5B5;
+    /* Updated to specific green */
+    color: #4a4a4a;
+    /* Dark Text */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding: 0;
+    /* Override previous padding */
+    min-width: 0;
+    /* Override previous min-width */
+}
+
+/* Remove previous arch decoration */
+.countdown-item::before,
+.countdown-item::after {
+    display: none;
+}
+
+.countdown-item span:first-child {
+    font-size: 2.5rem;
+    font-weight: 400;
+    font-family: var(--heading-font);
+    line-height: 1;
+    color: #4a4a4a;
+    /* Dark text */
+    margin-bottom: 0px;
+    text-shadow: none;
+}
+
+.countdown-item .label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.2rem;
+    color: #4a4a4a;
+    /* Dark text */
+}
+
+/* Mobile Adjustments for Date Layout */
+@media (max-width: 768px) {
+    .date-line {
+        gap: 1rem;
+    }
+
+    .date-item {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .date-item.day-highlight {
+        font-size: 1.5rem;
+        letter-spacing: 3px;
+    }
+
+    .date-separator {
+        font-size: 1.2rem;
+    }
+}
+
+/* Details Section - Two Column Layout */
+.details-section {
+    padding: 8rem 0;
+    /* Elegant spacing */
+    background-color: #E5E2DD;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.detail-column {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.detail-column h3 {
+    color: var(--terracota-claro);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.detail-column p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+/* Mobile: Stack columns */
+@media (max-width: 768px) {
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background-color: var(--sage-green);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: var(--verde-oliva-claro);
+    color: var(--text-color);
+}
+
+/* RSVP Section */
+.rsvp-section {
+    padding: 8rem 0;
+    /* Elegant spacing */
+    /* Standardized padding */
+    text-align: center;
+    background-color: #F9F8F6;
+    /* Consistent background */
+    color: #4a4a4a;
+}
+
+.rsvp-section h2 {
+    color: var(--sage-green);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.rsvp-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.deftform-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Gifts Section */
+.gifts-section {
+    padding: 8rem 0;
+    /* Elegant spacing */
+    text-align: center;
+    background-color: #F8F7F3;
+    color: white;
+}
+
+.gifts-section h2 {
+    color: #4a4a4a;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.gifts-section>.container>p {
+    margin-bottom: 3rem;
+    font-size: 1.4rem;
+    font-family: var(--heading-font);
+    font-style: italic;
+    color: #4a4a4a;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bank-details {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: nowrap;
+    /* Single line on desktop */
+}
+
+.account-info {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.account-info strong {
+    display: block;
+    color: var(--sage-green);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--heading-font);
+}
+
+.account-info p {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.copy-btn {
+    background: none;
+    border: 1px solid var(--sage-green);
+    color: var(--sage-green);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--body-font);
+}
+
+
+
+footer {
+    padding: 1rem;
+    /* Reduced height */
+    text-align: center;
+    background-color: #4a4a4a;
+    /* Dark background */
+    color: white;
+    font-family: var(--body-font);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Mobile Responsiveness */
+
+@media (max-width: 768px) {
+    .names {
+        font-size: 2.5rem;
+    }
+
+    .countdown-grid {
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+        /* Force single line */
+        justify-content: center;
+    }
+
+    .countdown-item {
+        width: 70px;
+        height: 70px;
+        min-width: 0;
+        padding: 0;
+    }
+
+    .countdown-item span:first-child {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .countdown-item .label {
+        font-size: 0.7rem;
+    }
+
+    .hero .content {
+        padding: 2rem 1rem;
+    }
+
+    .bank-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .account-info {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+/* New Details Section Styles */
+.section-title {
+    font-family: var(--heading-font);
+    font-size: 2.5rem;
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.location-card {
+    background-color: white;
+    padding: 4rem 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    border-radius: 500px 500px 12px 12px;
+    padding-top: 6rem;
+    /* Extra padding for the arch top */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.location-card h3 {
+    font-size: 2.5rem;
+    color: var(--terracota-claro);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.location-card .address {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 2.5rem;
+    opacity: 0.8;
+}
+
+.event-details-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.detail-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vertical-divider {
+    width: 1px;
+    height: 40px;
+    background-color: var(--madera-suave);
+    opacity: 0.5;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--sage-green);
+    margin-bottom: 0.3rem;
+    font-family: var(--body-font);
+}
+
+.detail-text {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.location-btn {
+    margin-bottom: 3rem;
+    background-color: var(--terracota-claro);
+}
+
+.location-btn:hover {
+    background-color: var(--madera-suave);
+    color: white;
+}
+
+.dress-code-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gris-calido);
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .event-details-row {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .vertical-divider {
+        display: none;
+    }
+
+    .location-card h3 {
+        font-size: 2rem;
+    }
+}
+
+/* Floating RSVP Button Styles */
+.rsvp-fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--terracota-claro);
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--body-font);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.4s ease;
+    /* Hidden initially */
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.rsvp-fab.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.rsvp-fab:hover {
+    background-color: var(--sage-green);
+    transform: scale(1.05) translateY(0);
+}
+
+.rsvp-fab i {
+    font-size: 1.2rem;
+}
+
+/* Modal Styles */
+.rsvp-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    display: none;
+    /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.rsvp-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.rsvp-modal-content {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.rsvp-modal.active .rsvp-modal-content {
+    transform: scale(1);
+}
+
+.rsvp-modal-content h2 {
+    color: var(--sage-green);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.rsvp-modal-content p {
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal-btn:hover {
+    color: var(--terracota-claro);
+}
+
+.deftform-container-modal {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .rsvp-fab {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ... existing code ... */
+
+/* Animated Leaves */
+.leaf {
+    position: absolute;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+    /* Behind content but visible on bg */
+    transform-origin: bottom left;
+    animation: leafSway 4s ease-in-out infinite alternate;
+    width: 150px;
+    /* Base size */
+}
+
+@keyframes leafSway {
+    0% {
+        transform: rotate(-5deg) translateY(0);
+    }
+
+    100% {
+        transform: rotate(5deg) translateY(-5px);
+    }
+}
+
+/* Right side leaves - flipped */
+.leaf-right {
+    right: -30px;
+    /* Hide cut edge */
+    transform-origin: bottom right;
+    /* Adjust for flip */
+    /* We need to flip it horizontally. If we use scaleX(-1), 
+       transform-origin changes. 
+       Let's use a wrapper or apply scaleX to the image itself?
+       Or just use scaleX(-1) in the transform. 
+       If we use scaleX(-1), the animation rotation direction is also flipped visually.
+    */
+    animation-name: leafSwayRight;
+}
+
+@keyframes leafSwayRight {
+    0% {
+        transform: scaleX(-1) rotate(-5deg) translateY(0);
+    }
+
+    100% {
+        transform: scaleX(-1) rotate(5deg) translateY(-5px);
+    }
+}
+
+.leaf-left {
+    left: -30px;
+    /* Hide cut edge */
+}
+
+/* Variations */
+.leaf:nth-child(odd) {
+    width: 120px;
+    animation-duration: 5s;
+    animation-delay: 0.5s;
+}
+
+.leaf:nth-child(even) {
+    width: 180px;
+    animation-duration: 6s;
+    animation-delay: 1s;
+}
+
+.leaf:nth-child(3n) {
+    width: 100px;
+    animation-duration: 4.5s;
+    transform: rotate(10deg);
+    /* Initial offset? cancel with animation */
+}
+
+/* Specific leaf positioning in sections */
+/* We will likely use inline styles or helper classes for `top` */
+
+/* Make sure containers clip correctly if needed, or let them overflow */
+.hero,
+.event-info-section,
+.details-section,
+.gifts-section {
+    position: relative;
+    /* overflow: hidden;  <-- Might cut off the leaves if they are on the edge. 
+       User said "un poco más allá de los bordes". 
+       If we want them to hang *out* of the container, we need overflow visible. 
+       BUT body has overflow-x hidden, so it should be fine. 
+    */
+}
+
+/* =========================================
+   Floating Leaves Decoration
+   ========================================= */
+
+.leaves-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+    /* Prevent horizontal scrollbars if leaves go too far out */
+}
+
+.leaf {
+    position: absolute;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 10;
+    width: 150px;
+    /* Base size */
+    transition: transform 0.3s ease;
+    animation: float-rotate 6s ease-in-out infinite alternate;
+}
+
+.leaf-left {
+    left: -40px;
+    /* "Un poco más allá de los bordes" */
+    transform-origin: left center;
+}
+
+.leaf-right {
+    right: -40px;
+    transform-origin: right center;
+}
+
+@keyframes float-rotate {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+/* Individual adjustments for angle, size, and position */
+
+/* Hero / Top area - Leaves removed */
+
+/* Info Section */
+.leaf-3 {
+    top: 30%;
+    width: 160px;
+    animation-duration: 6s;
+    animation-delay: 2s;
+    transform: rotate(15deg);
+}
+
+/* Details Section */
+.leaf.leaf-4 {
+    top: 45%;
+    width: 92px;
+    animation-duration: 9s;
+    animation-delay: 0.5s;
+    transform: rotate(-10deg);
+}
+
+/* RSVP / Gifts Section */
+.leaf-5 {
+    top: 60%;
+    width: 130px;
+    animation-duration: 7.5s;
+    animation-delay: 1.5s;
+    transform: rotate(5deg);
+}
+
+.leaf.leaf-6 {
+    top: 75%;
+    width: 102px;
+    animation-duration: 6.5s;
+    animation-delay: 2.5s;
+    transform: rotate(-8deg);
+}
+
+/* Footer area */
+.leaf-7 {
+    top: 88%;
+    width: 150px;
+    animation-duration: 8s;
+    animation-delay: 3s;
+    transform: rotate(12deg);
+}
+
+.leaf-8 {
+    top: 96%;
+    width: 120px;
+    animation-duration: 5.5s;
+    animation-delay: 1s;
+    transform: rotate(-12deg);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .leaf {
+        width: 100px;
+        /* Smaller on mobile */
+        opacity: 0.4;
+        /* Slightly more transparent to not block text */
+    }
+
+    .leaf-left {
+        left: -20px;
+    }
+
+    .leaf-right {
+        right: -20px;
+    }
+
+    /* Adjust positions if layout stretches differently */
+    .leaf-1 {
+        width: 120px;
+    }
+
+    /* First left leaf - Move up a bit */
+    .leaf-3 {
+        top: 22%;
+    }
+
+    /* First right leaf - Move down and make smaller */
+    .leaf.leaf-4 {
+        top: 48%;
+        width: 65px;
+    }
+
+    /* Second right leaf - smaller */
+    .leaf.leaf-6 {
+        width: 75px;
+    }
+}
+
+/* Dress Code Details */
+.dress-code-note {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.dress-code-note p {
+    margin-bottom: 0.8rem;
+}
+
+.dress-code-note p:last-child {
+    margin-bottom: 0;
+}
+
+.reserved-warning {
+    font-family: var(--heading-font);
+    font-size: 1.1rem;
+    color: var(--terracota-claro);
+    /* Terracotta to catch attention elegantly */
+    font-weight: 700;
+    margin: 1.5rem 0 !important;
+    /* Ensure spacing */
+    padding: 1rem;
+    border: 1px solid var(--madera-suave);
+    border-radius: 8px;
+    background-color: var(--blanco-hueso);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    letter-spacing: 0.5px;
+}

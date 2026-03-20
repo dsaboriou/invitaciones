@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda de Ana y Mary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css?v=5">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+
+<body>
+    <div class="paper-texture"></div>
+
+    <!-- Floating Leaves Decoration -->
+    <div class="leaves-container">
+        <!-- Leaves removed from hero section as requested -->
+        <img src="assets/images/hoja_izquierda.webp" alt="" class="leaf leaf-left leaf-3">
+        <img src="assets/images/hoja_derecha.webp" alt="" class="leaf leaf-right leaf-4">
+        <img src="assets/images/hoja_izquierda.webp" alt="" class="leaf leaf-left leaf-5">
+        <img src="assets/images/hoja_derecha.webp" alt="" class="leaf leaf-right leaf-6">
+        <img src="assets/images/hoja_izquierda.webp" alt="" class="leaf leaf-left leaf-7">
+        <img src="assets/images/hoja_derecha.webp" alt="" class="leaf leaf-right leaf-8">
+    </div>
+
+    <!-- Background Audio -->
+    <audio id="bg-music" loop>
+        <source src="assets/cancion.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="assets/video/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-top-date">25.07.26</div>
+
+
+
+
+
+    </header>
+
+    <section class="event-info-section">
+        <div class="container">
+            <!-- Date layout removed -->
+
+            <div class="content">
+                <button class="heart-btn" id="heart-btn"><i class="far fa-heart"></i></button>
+                <h1 class="names">Ana & Mary</h1>
+                <p class="subtitle">¡NOS CASAMOS!</p>
+
+                <!-- Music Player Interface -->
+                <div class="spotify-player">
+                    <div class="progress-area">
+                        <div class="progress-bar" id="progress-container">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="time-row">
+                            <span id="current-time">0:00</span>
+                            <span id="duration">3:42</span>
+                        </div>
+                    </div>
+
+                    <div class="controls-row">
+                        <button id="prev-btn" class="control-btn"><i class="fas fa-step-backward"></i></button>
+                        <button id="play-pause-btn" class="play-btn-circle"><i class="fas fa-play"></i></button>
+                        <button id="next-btn" class="control-btn"><i class="fas fa-step-forward"></i></button>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <p class="message-text">
+                "Acompañanos en este día tan especial, lleno de amor, detalles y personas que han marcado nuestra
+                historia. <br> <br> ¡Nos hace mucha ilusión compartirlo con vos!"
+            </p>
+
+            <div id="countdown" class="countdown-grid">
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <span class="label">Días</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <span class="label">Hs</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <span class="label">Min</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <span class="label">Seg</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="details-section">
+        <div class="container">
+            <h2 class="section-title">Te esperamos en:</h2>
+            <div class="location-card">
+                <h3>Woodlands CR</h3>
+                <p class="address">El Tirol, Heredia</p>
+
+                <div class="event-details-row">
+                    <div class="detail-block">
+                        <span class="detail-label">Fecha</span>
+                        <span class="detail-text">25 de Julio, 2026</span>
+                    </div>
+                    <div class="vertical-divider"></div>
+                    <div class="detail-block">
+                        <span class="detail-label">Hora</span>
+                        <span class="detail-text">3:00 PM</span>
+                    </div>
+                </div>
+
+                <a href="https://waze.com/ul/hd1u1q93bg" target="_blank" class="btn location-btn">Ver ubicación</a>
+
+                <div class="dress-code-block">
+                    <span class="detail-label">Código de Vestimenta</span>
+                    <span class="detail-text">Formal</span>
+
+                    <div class="dress-code-note">
+                        <p>Nuestra boda se inspira en tonos suaves y naturales.</p>
+                        <p>Agradecemos evitar colores fuertes o muy vibrantes como fucsia, rojo intenso, azul eléctrico
+                            o neón.</p>
+                        <p class="reserved-warning">El color BLANCO, MARFIL y tonos similares están reservados para las
+                            novias</p>
+                        <p>Tomá en cuenta que la ceremonia es al aire libre y el clima puede ser frío.
+                            <br><br>Recomendamos
+                            llevar abrigo y utilizar calzado cómodo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="dress-code-block" style="margin-top: 2rem;">
+                    <span class="detail-label">Fecha Límite de Confirmación</span>
+                    <span class="detail-text">25 de Junio</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating RSVP Button -->
+    <button id="rsvp-fab" class="rsvp-fab">
+        <i class="fas fa-envelope-open-text"></i> Confirmar Asistencia
+    </button>
+
+    <!-- RSVP Modal -->
+    <div id="rsvp-modal" class="rsvp-modal">
+        <div class="rsvp-modal-content">
+            <button class="close-modal-btn">&times;</button>
+            <h2>Confirmación de Asistencia</h2>
+            <p>Por favor, confirmanos si podrás acompañarnos.<br><strong>Fecha límite para confirmar: 25 de
+                    junio</strong></p>
+            <div class="deftform-container-modal">
+                <div class="deftform" data-form-id="2c94fb67-b971-48d2-a0b0-76e7e6f1a3bb" data-form-width="100%"
+                    data-form-align="center" data-form-auto-height="1"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.deftform.com/embed.js"></script>
+
+    <section class="gifts-section">
+        <div class="container">
+            <div style="font-size: 2.5rem; color: #A7B89F; margin-bottom: 0.5rem;"><i class="fas fa-gift"></i></div>
+            <h2>Regalos</h2>
+            <p>Tu presencia es nuestro mejor regalo, pero si nace de ustedes tener un detalle, podés hacerlo de la
+                siguiente manera:
+            </p>
+            <div class="bank-details">
+                <div class="account-info">
+                    <strong>₡ BAC</strong>
+                    <p id="bac-account">934649799</p>
+                    <button class="copy-btn" onclick="copyToClipboard('bac-account', this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                <div class="account-info">
+                    <strong>₡ IBAN</strong>
+                    <p id="iban-account">CR16010200009346497993</p>
+                    <button class="copy-btn" onclick="copyToClipboard('iban-account', this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                <div class="account-info">
+                    <strong>SINPE Móvil</strong>
+                    <p id="sinpe-account">8650-6638</p>
+                    <button class="copy-btn" onclick="copyToClipboard('sinpe-account', this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Creado por <a href="https://zum.cr/" target="_blank"
+                style="color: white; text-decoration: none; font-weight: bold;">Zum</a></p>
+    </footer>
+
+    <script src="countdown.js?v=2"></script>
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>

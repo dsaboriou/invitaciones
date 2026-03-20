@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda Daniela & Jhan Mario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/icons/favicon.svg">
+
+    <!-- Open Graph for sharing (WhatsApp, Facebook, etc) -->
+    <meta property="og:title" content="Boda Daniela & Jhan Mario">
+    <meta property="og:description" content="Donde hay amor, hay vida.">
+    <meta property="og:image" content="assets/images/gallery/Foto1.webp">
+    <meta property="og:image:secure_url" content="assets/images/gallery/Foto1.webp">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+    <meta property="og:type" content="website">
+    <link rel="image_src" href="assets/images/gallery/Foto1.webp">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Hero -->
+    <header class="section hero" id="inicio">
+        <video autoplay muted loop playsinline id="hero-video">
+            <source src="assets/hero.mp4" type="video/mp4">
+        </video>
+        <div class="petals-container"></div>
+        <div class="hero-content">
+            <p>NUESTRA BODA</p>
+            <h1>Daniela & <br class="mobile-break">Jhan Mario</h1>
+
+            <!-- Music Player -->
+            <div class="spotify-player">
+                <audio id="bg-music" src="assets/cancion.mp3" loop></audio>
+                <div class="player-controls">
+                    <button class="player-btn prev" title="Anterior">
+                        <i class="fa-solid fa-backward-step"></i>
+                    </button>
+                    <button class="player-btn play-pause" id="play-pause-btn" title="Reproducir">
+                        <i class="fa-solid fa-play" id="play-icon"></i>
+                        <i class="fa-solid fa-pause" id="pause-icon" style="display: none;"></i>
+                    </button>
+                    <button class="player-btn next" title="Siguiente">
+                        <i class="fa-solid fa-forward-step"></i>
+                    </button>
+                </div>
+                <div class="player-info">
+                    <p>Escucha nuestra canción</p>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>desliza</span>
+            <div class="arrows">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 2: Quote (Moved) -->
+    <section class="section" id="fecha">
+        <div class="rose-bg"></div>
+        <div class="split-section reverse">
+            <div class="image-side reveal reveal-right">
+                <div class="image-side-wrapper">
+                    <img src="assets/images/gallery/Foto9.webp" alt="Nuestra unión">
+                </div>
+            </div>
+            <div class="info-side reveal reveal-left quote-section-info luxury-date-section">
+                <span class="section-label">Acompáñanos</span>
+
+                <div class="horizontal-date-box">
+                    <div class="date-column">
+                        <span class="column-value">Sábado</span>
+                    </div>
+                    <div class="vertical-gold-divider"></div>
+                    <div class="date-column">
+                        <span class="column-value"><span>18</span> JULIO</span>
+                    </div>
+                    <div class="vertical-gold-divider"></div>
+                    <div class="date-column">
+                        <span class="column-value">03:00 PM</span>
+                    </div>
+                </div>
+
+                <div class="minimal-countdown" id="countdown">
+                    <div class="count-unit">
+                        <span id="days">00</span>
+                        <p>días</p>
+                    </div>
+                    <div class="count-sep">/</div>
+                    <div class="count-unit">
+                        <span id="hours">00</span>
+                        <p>horas</p>
+                    </div>
+                    <div class="count-sep">/</div>
+                    <div class="count-unit">
+                        <span id="minutes">00</span>
+                        <p>min</p>
+                    </div>
+                    <div class="count-sep">/</div>
+                    <div class="count-unit">
+                        <span id="seconds">00</span>
+                        <p>seg</p>
+                    </div>
+                </div>
+
+                <div class="decorative-separator">─ ◈ ─</div>
+
+                <div class="quote-footer">
+                    <p class="main-quote-small">"Nos elegimos cada día… <br>hoy lo hacemos para toda la vida"</p>
+                    <p class="quote-context-elegant">Hoy nuestro amor nos une para siempre y nos encantaría celebrarlo
+                        junto a quienes han sido parte de nuestra historia.</p>
+                    <p class="quote-context-elegant">Nos llenaría de alegría contar con tu presencia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Locations (Redesigned) -->
+    <section class="section" id="ubicacion">
+        <div class="petals-container small"></div>
+        <div class="split-section">
+            <div class="image-side reveal reveal-left">
+                <div class="image-side-wrapper">
+                    <img src="assets/images/gallery/Foto4.webp" alt="Ubicación">
+                </div>
+            </div>
+            <div class="info-side reveal reveal-right">
+                <h2>Ubicación</h2>
+                <div class="locations-grid">
+                    <div class="location-item">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-church"></i>
+                        </div>
+                        <div class="location-details">
+                            <h3>Ceremonia Religiosa</h3>
+                            <p class="venue-name">Capilla Castillo Country Club</p>
+                            <p class="venue-sub">San Rafael de Heredia</p>
+                            <a href="https://waze.com/ul/hd1u1nwe2e" target="_blank" class="waze-btn-small">
+                                Ver en Waze
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="location-item">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-glass-cheers"></i>
+                        </div>
+                        <div class="location-details">
+                            <h3>Recepción</h3>
+                            <p class="venue-name">Salón La Princesa</p>
+                            <p class="venue-sub">Castillo Country Club</p>
+                            <a href="https://waze.com/ul/hd1u1nwe2e" target="_blank" class="waze-btn-small">
+                                Ver en Waze
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-footer-new">
+                    <div class="access-note-lux">
+                        <p>Favor indicar en la entrada: <br> <span class="lux-highlight">"Boda de Daniela & Jhan
+                                Mario"</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Dress Code -->
+    <section class="section" id="vestimenta">
+        <div class="rose-bg"></div>
+        <div class="split-section reverse">
+            <div class="image-side reveal reveal-right">
+                <div class="image-side-wrapper">
+                    <img src="assets/images/gallery/Foto2.webp" alt="Código de vestimenta">
+                </div>
+            </div>
+            <div class="info-side reveal reveal-left">
+                <h2>Código de Vestimenta</h2>
+                <div class="dress-code-grid">
+                    <div class="gender-item">
+                        <div class="icon-wrapper-small">
+                            <i class="fa-solid fa-person-dress"></i>
+                        </div>
+                        <div class="gender-details">
+                            <h3>Damas</h3>
+                            <p class="dress-style">Gala / Vestido Largo</p>
+                            <div class="prohibited-mini">
+                                <p class="prohibited-title-mini">Favor evitar:</p>
+                                <div class="color-palette-mini">
+                                    <div class="color-swatch-mini">
+                                        <div class="swatch white"></div>
+                                        <span>Blanco</span>
+                                    </div>
+                                    <div class="color-swatch-mini">
+                                        <div class="swatch red"></div>
+                                        <span>Rojo</span>
+                                    </div>
+                                    <div class="color-swatch-mini">
+                                        <div class="swatch beige"></div>
+                                        <span>Beige</span>
+                                    </div>
+                                    <div class="color-swatch-mini">
+                                        <div class="swatch black"></div>
+                                        <span>Negro</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gender-item">
+                        <div class="icon-wrapper-small">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div class="gender-details">
+                            <h3>Caballeros</h3>
+                            <p class="dress-style">Formal / Traje Completo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="section" id="confirmacion">
+        <div class="petals-container small"></div>
+        <div class="split-section">
+            <div class="image-side reveal reveal-left">
+                <div class="image-side-wrapper">
+                    <img src="assets/images/gallery/Foto8.webp" alt="Confirma tu asistencia">
+                </div>
+            </div>
+            <div class="info-side reveal reveal-right">
+                <h2>Asistencia</h2>
+                <p>Por favor confirma tu presencia antes del <span class="lux-highlight" id="fecha-limite">1 de
+                        Mayo</span>.</p>
+
+                <form id="formulario-rsvp">
+                    <input type="hidden" name="sheetId" value="1uwpOL_LWc_PfErgXPTtW3j1tt0vUdPPXSoLGnSZbJdo">
+                    <div class="campo-formulario" id="wrap-campo-1">
+                        <label for="campo-1">Nombre Completo</label>
+                        <input type="text" id="campo-1" name="Nombre Completo" required
+                            placeholder="Tu nombre y apellidos">
+                    </div>
+
+                    <button type="submit" id="btn-enviar">Confirmar Asistencia</button>
+                </form>
+
+                <div id="mensaje-plazo-finalizado" style="display:none;">
+                    <div class="expired-content">
+                        <i class="fa-solid fa-calendar-xmark"></i>
+                        <p>El plazo para confirmar asistencia ha finalizado. ¡Nos vemos pronto!</p>
+                    </div>
+                </div>
+
+                <div id="mensaje-exito" style="display:none;">
+                    <div class="success-content">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <p>¡Muchas gracias! Tu confirmación se ha guardado correctamente.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Gifts -->
+    <section class="section" id="regalos">
+        <div class="rose-bg"></div>
+        <div class="split-section reverse">
+            <div class="image-side reveal reveal-right">
+                <div class="image-side-wrapper">
+                    <img src="assets/images/gallery/Foto3.webp" alt="Regalos">
+                </div>
+            </div>
+            <div class="info-side reveal reveal-left">
+                <h2>Regalos</h2>
+                <p>Tu presencia es nuestro mejor regalo, si deseas tener un detalle con nosotros, un aporte en efectivo
+                    o transferencia bancaria será bien recibido.</p>
+
+                <div class="gift-container">
+                    <div class="account-grid">
+                        <div class="account-card">
+                            <div class="account-header">
+                                <span class="bank-name">BCR</span>
+                            </div>
+                            <div class="account-body">
+                                <span class="account-number">CR23015202001175994900</span>
+                                <button class="copy-btn" onclick="copyValue('CR23015202001175994900', this)">
+                                    <i class="fa-regular fa-copy"></i>
+                                    <span>Copiar</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="account-card">
+                            <div class="account-header">
+                                <span class="bank-name">BAC</span>
+                            </div>
+                            <div class="account-body">
+                                <span class="account-number">969211101</span>
+                                <button class="copy-btn" onclick="copyValue('969211101', this)">
+                                    <i class="fa-regular fa-copy"></i>
+                                    <span>Copiar</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="account-card">
+                            <div class="account-header">
+                                <span class="bank-name">SINPE</span>
+                            </div>
+                            <div class="account-body">
+                                <span class="account-number">84234176</span>
+                                <button class="copy-btn" onclick="copyValue('84234176', this)">
+                                    <i class="fa-regular fa-copy"></i>
+                                    <span>Copiar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="account-footer-lux">
+                        <p>A nombre de: <span class="name-highlight">Jhan Mario Rivas Barrantes</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Section: Story & Gallery -->
+    <section class="section-combined" id="historia">
+        <div class="petals-container small"></div>
+        <div class="info-side reveal full-width-centered">
+            <h2>Nuestra Historia</h2>
+            <p>Cada momento compartido nos ha traído hasta este día. Estamos felices de comenzar este nuevo capítulo
+                juntos.</p>
+        </div>
+
+        <div class="polaroid-track">
+            <!-- First set -->
+            <div class="polaroid-gallery">
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto1.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Daniela & Jhan Mario</div>
+                </div>
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto2.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Momentos</div>
+                </div>
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto3.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Nuestra Unión</div>
+                </div>
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto4.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Aventura</div>
+                </div>
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto5.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Nuestra Boda</div>
+                </div>
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto6.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Siempre</div>
+                </div>
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto7.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Juntos</div>
+                </div>
+            </div>
+            <!-- Duplicate for seamless scroll -->
+            <div class="polaroid-gallery">
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto1.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Daniela & Jhan Mario</div>
+                </div>
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto2.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Momentos</div>
+                </div>
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto3.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Nuestra Unión</div>
+                </div>
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto4.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Aventura</div>
+                </div>
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto5.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Nuestra Boda</div>
+                </div>
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto6.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Siempre</div>
+                </div>
+                <div class="polaroid-item"><img src="assets/images/gallery/Foto7.webp" alt="Recuerdo">
+                    <div class="polaroid-cap">Juntos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="mini-footer">
+        <p>Creada por <a href="https://zum.cr/" target="_blank">Zum</a></p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
