@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fabricio & Kimberly - Wedding Edition</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Meta etiquetas para compartir en WhatsApp (Open Graph) -->
+  <meta property="og:title" content="Fabricio & Kimberly — ¡Nos Casamos!">
+  <meta property="og:description" content="Acompáñanos a celebrar nuestra boda el 02 de Mayo, 2026. Ver invitación.">
+  <meta property="og:image" content="assets/fotos/Foto18.webp">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Combined Serif (Cormorant Garamond) and Sans Serif (Montserrat) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="magazine-container">
+    <!-- PORTADA -->
+    <section class="page cover-page" id="home">
+      <!-- Background Image taking full cover -->
+      <div class="cover-image" style="background-image: url('assets/fotos/Foto1.webp');"></div>
+
+      <!-- Magazine Content Overlay -->
+      <div class="cover-content">
+
+
+        <div class="cover-title fade-in-up">
+          <h1 class="main-title">NOS CASAMOS</h1>
+          <div class="couple-names">
+            <span class="name">Fabricio</span>
+            <span class="ampersand">&</span>
+            <span class="name">Kimberly</span>
+          </div>
+          <div class="hero-verse fade-in-up">
+            <p>Uno solo puede ser vencido, pero dos pueden resistir.<br>
+              ¡La cuerda de tres hilos no se rompe fácilmente!<br>
+              <span class="verse-reference">Eclesiastés 4:12</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="scroll-indicator fade-in">
+        <!-- Botón de música integrado (solo iconos) -->
+        <div class="music-player">
+          <button id="playMusicBtn" class="btn-music" title="Reproducir canción">
+            <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              viewBox="0 0 16 16">
+              <path
+                d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+            </svg>
+            <svg class="icon-pause" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z" />
+            </svg>
+            <span>Nuestra canción</span>
+          </button>
+          <audio id="bgMusic" loop>
+            <source src="assets/cancion.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+
+        <!-- Flechas animadas hacia abajo -->
+        <div class="arrows-down">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+            class="bi bi-chevron-down a1" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+            class="bi bi-chevron-down a2" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+            class="bi bi-chevron-down a3" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: CUENTA REGRESIVA -->
+    <section class="page article-page bg-ivory" id="countdown">
+      <div class="article-layout right-text">
+        <div class="image-content fade-right">
+          <div class="image-wrapper" style="background-image: url('assets/fotos/Foto14.webp');"></div>
+        </div>
+        <div class="text-content fade-left">
+          <div class="editorial-line"></div>
+          <p class="section-label">Save the Date</p>
+          <div class="date-lockup">
+            <span class="day">2</span>
+            <div class="month-year">
+              <span class="month">Mayo</span>
+              <span class="year">2026</span>
+            </div>
+          </div>
+          <p class="countdown-subtitle">Una historia de amor que comienza para siempre</p>
+
+          <div class="countdown-timer" id="timer">
+            <div class="timer-block">
+              <span class="number" id="days">00</span>
+              <span class="label">Días</span>
+            </div>
+            <div class="timer-divider">:</div>
+            <div class="timer-block">
+              <span class="number" id="hours">00</span>
+              <span class="label">Horas</span>
+            </div>
+            <div class="timer-divider">:</div>
+            <div class="timer-block">
+              <span class="number" id="minutes">00</span>
+              <span class="label">Minutos</span>
+            </div>
+            <div class="timer-divider">:</div>
+            <div class="timer-block">
+              <span class="number" id="seconds">00</span>
+              <span class="label">Segundos</span>
+            </div>
+          </div>
+          <div class="guest-spaces" id="guestSpaces">
+            Hemos reservado <strong><span class="space-count" id="spaceCount">1</span> <span
+                id="spaceLabel">espacio</span></strong> para ti
+          </div>
+          <p class="rsvp-deadline">Fecha límite para confirmación:<br class="mobile-br"> <strong>1 de abril</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEC 1: LA CEREMONIA -->
+    <section class="page article-page" id="ceremony">
+      <div class="article-layout">
+        <div class="image-content fade-left">
+          <div class="image-wrapper" style="background-image: url('assets/fotos/Foto12.webp');"></div>
+        </div>
+        <div class="text-content fade-right">
+          <div class="editorial-line"></div>
+          <p class="section-label">Capítulo I</p>
+          <h2 class="editorial-title">La<br>Ceremonia</h2>
+          <div class="details">
+            <p class="main-detail">Parroquia San<br>Rafael Arcángel<br>de Escazú</p>
+            <p class="time">2:30 PM</p>
+            <p class="punctuality-note">Agradecemos su puntualidad</p>
+            <a href="https://waze.com/ul/hd1u0extdp" class="btn-outline" target="_blank">Ver en waze</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEC 2: LA CELEBRACION -->
+    <section class="page article-page bg-ivory" id="reception">
+      <div class="article-layout right-text">
+        <div class="image-content fade-right">
+          <div class="image-wrapper" style="background-image: url('assets/fotos/Foto3.webp');"></div>
+        </div>
+        <div class="text-content fade-left">
+          <div class="editorial-line"></div>
+          <p class="section-label">Capítulo II</p>
+          <h2 class="editorial-title">La<br>Celebración</h2>
+          <div class="details">
+            <p class="main-detail">Entre Palmas</p>
+            <p class="location">San Rafael, Alajuela</p>
+            <a href="https://waze.com/ul/hd1u0ehns1" class="btn-outline" target="_blank">Ver en waze</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEC 3: DRESS CODE -->
+    <section class="page dress-code-page" id="dresscode">
+      <div class="dc-container right-text">
+        <div class="dc-images fade-left">
+          <div class="image-small img1" style="background-image: url('assets/fotos/Foto8.webp');"></div>
+        </div>
+        <div class="dc-text fade-right">
+          <p class="section-label">Gala</p>
+          <h2 class="editorial-title">Código de Vestimenta</h2>
+          <h3 class="dress-style">Formal</h3>
+
+          <div class="rules">
+            <div class="rule-block">
+              <p class="rule-title">Damas</p>
+              <p class="rule-desc">Vestido largo</p>
+            </div>
+            <div class="rule-block">
+              <p class="rule-title">Caballeros</p>
+              <p class="rule-desc">Traje entero</p>
+            </div>
+          </div>
+
+          <div class="reserved-colors-container">
+            <p class="reserved-label">Se reservan los tonos <strong>(no usar)</strong></p>
+            <div class="palette">
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #FFFFFF;"></div>
+                <span class="color-name">Blanco</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #FCFCF4;"></div>
+                <span class="color-name">Ivory</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #F8F0E3;"></div>
+                <span class="color-name">Marfil</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: #7B2C3A;"></div>
+                <span class="color-name">Rojo</span>
+              </div>
+              <div class="color-item">
+                <div class="color-dot" style="background-color: var(--color-olive);"></div>
+                <span class="color-name">Verde</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="adult-note">
+            Amamos a los niños, pero este evento es <strong>exclusivo para adultos</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEC 5: OBSEQUIOS -->
+    <section class="page bg-ivory" id="gifts"
+      style="display: flex; flex-direction: column; justify-content: space-between; padding: 0;">
+
+      <div class="fade-up"
+        style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10vh 5vw; text-align: center; width: 100%;">
+        <div class="editorial-line" style="margin: 0 auto 20px;"></div>
+        <p class="section-label">Capítulo IV</p>
+        <h2 class="editorial-title" style="margin-bottom: 2rem;">Con Cariño</h2>
+
+        <div class="gifts-message" style="max-width: 600px; margin: 0 auto 2rem;">
+          <p>Para nosotros su compañía en este día tan especial es nuestro mejor regalo.</p>
+          <p>Si desea realizarnos un obsequio, agradecemos que su detalle sea en efectivo, por SINPE móvil o
+            transferencia.</p>
+        </div>
+
+        <div class="bank-details">
+          <div class="bank-item">
+            <p class="bank-label">SINPE Móvil</p>
+            <p class="bank-number">7156-4176</p>
+            <button class="btn-copy" onclick="copyToClipboard('7156-4176', this)">Copiar</button>
+          </div>
+          <div class="divider"></div>
+          <div class="bank-item">
+            <p class="bank-label">IBAN Banco Nacional</p>
+            <p class="bank-number iban">CR66 0151 1994 2001 0176 110</p>
+            <button class="btn-copy" onclick="copyToClipboard('CR66 0151 1994 2001 0176 110', this)">Copiar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- GALERIA INFINITA -->
+      <div class="photo-gallery-slider">
+        <div class="gallery-track">
+          <!-- First set of images -->
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto1.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto2.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto3.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto4.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto5.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto6.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto7.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto8.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto9.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto10.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto11.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto12.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto13.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto14.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto15.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto16.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto17.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto18.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto19.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto20.webp');"></div>
+          <!-- Duplicate set for infinite loop -->
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto1.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto2.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto3.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto4.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto5.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto6.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto7.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto8.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto9.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto10.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto11.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto12.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto13.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto14.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto15.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto16.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto17.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto18.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto19.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/fotos/Foto20.webp');"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FLOATING RSVP BUTTON & MODAL -->
+  <button class="floating-rsvp-btn fade-in" id="openRsvpBtn" title="Confirmar Asistencia">
+    <span><strong>Confirmar Asistencia</strong></span>
+  </button>
+
+  <div class="rsvp-modal" id="rsvpModal">
+    <div class="rsvp-modal-content">
+      <button class="close-rsvp-btn" id="closeRsvpBtn">&times;</button>
+      <div class="rsvp-modal-body">
+        <h2 class="editorial-title" style="font-size: 2.5rem; margin-bottom: 0.5rem; margin-top: 1rem;">
+          Confirmación</h2>
+        <p class="rsvp-deadline">Antes del <strong>01 de abril</strong></p>
+        <div class="guest-spaces" id="modalGuestSpaces" style="margin-top: 15px;">
+          Hemos reservado <strong><span class="space-count" id="modalSpaceCount">1</span> <span
+              id="modalSpaceLabel">espacio</span></strong> para ti
+        </div>
+
+        <form id="formulario-rsvp">
+          <input type="hidden" name="sheetId" value="1YDUr2WR7gIW4gaRyo6SPFGYkhRavtZAbfZO8grxK8XY">
+          <div class="campo-formulario" id="wrap-campo-1">
+            <label for="campo-1">Nombre Completo</label>
+            <input type="text" id="campo-1" name="Nombre Completo" placeholder="Escribe tu nombre" required>
+          </div>
+          <div class="campo-formulario" id="wrap-campo-2">
+            <label for="campo-2">Cantidad de Asistentes</label>
+            <input type="number" inputmode="numeric" min="1" id="campo-2" name="Cantidad de Asistentes" placeholder="0"
+              required>
+          </div>
+
+          <button type="submit" id="btn-enviar">Confirmar Asistencia</button>
+        </form>
+
+        <div id="mensaje-exito" style="display:none;">
+          <strong>¡Muchas gracias!</strong> <br> Tu confirmación se ha guardado correctamente.
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-up, .fade-in, .fade-in-up, .fade-left, .fade-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // SHOW/HIDE FLOATING RSVP BUTTON
+    const floatingBtn = document.getElementById('openRsvpBtn');
+    const receptionSection = document.getElementById('reception');
+
+    const rsvpObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Show if intersecting OR if we have already scrolled past it (top is negative)
+        if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+          floatingBtn.classList.add('show');
+          // Once it's shown, we don't need to observe anymore as per user request
+          // (They want it to remain visible even if scrolling back up)
+          rsvpObserver.unobserve(receptionSection);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    rsvpObserver.observe(receptionSection);
+
+    // COUNTDOWN TIMER LOGIC
+    function updateTimer() {
+      const weddingDate = new Date('May 2, 2026 14:30:00').getTime();
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerText = String(days).padStart(2, '0');
+      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+
+      if (distance < 0) {
+        clearInterval(timerInterval);
+        document.getElementById('timer').innerHTML = "<p class='wedding-day-message'>¡Es hoy!</p>";
+      }
+    }
+
+    const timerInterval = setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // RSVP MODAL LOGIC
+    const modal = document.getElementById('rsvpModal');
+    const openBtn = document.getElementById('openRsvpBtn');
+    const closeBtn = document.getElementById('closeRsvpBtn');
+
+    openBtn.onclick = function () {
+      modal.style.display = 'flex';
+      // Slight delay to allow display flex to apply before adding class for animation
+      setTimeout(() => {
+        modal.classList.add('active');
+      }, 10);
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 400); // match transition duration
+    }
+
+    closeBtn.onclick = closeModal;
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+
+    // MUSIC LOGIC
+    const bgMusic = document.getElementById('bgMusic');
+    const playMusicBtn = document.getElementById('playMusicBtn');
+    const iconPlay = playMusicBtn.querySelector('.icon-play');
+    const iconPause = playMusicBtn.querySelector('.icon-pause');
+
+    playMusicBtn.onclick = function () {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        iconPlay.style.display = 'none';
+        iconPause.style.display = 'block';
+      } else {
+        bgMusic.pause();
+        iconPlay.style.display = 'block';
+        iconPause.style.display = 'none';
+      }
+    }
+
+    // COPY TO CLIPBOARD FUNCTION
+    function copyToClipboard(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = '¡Copiado!';
+        btn.classList.add('copied');
+
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        console.error('Error al copiar: ', err);
+      });
+    }
+    // GUEST SPACES LOGIC
+    (function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const spacesParam = urlParams.get('p');
+      const inputAsistentes = document.getElementById('campo-2');
+      const wrapAsistentes = document.getElementById('wrap-campo-2');
+      const spaces = parseInt(spacesParam);
+
+      if (spacesParam && !isNaN(spaces)) {
+        // Update main page text
+        const spaceCount = document.getElementById('spaceCount');
+        const spaceLabel = document.getElementById('spaceLabel');
+        if (spaceCount) spaceCount.innerText = spaces;
+        if (spaceLabel) spaceLabel.innerText = (spaces === 1) ? 'espacio' : 'espacios';
+
+        // Update modal text
+        const modalSpaceCount = document.getElementById('modalSpaceCount');
+        const modalSpaceLabel = document.getElementById('modalSpaceLabel');
+        if (modalSpaceCount) modalSpaceCount.innerText = spaces;
+        if (modalSpaceLabel) modalSpaceLabel.innerText = (spaces === 1) ? 'espacio' : 'espacios';
+
+        // --- LIMIT ATTENDEES IN RSVP FORM ---
+        if (inputAsistentes) {
+          inputAsistentes.max = spaces;
+          inputAsistentes.placeholder = `Máximo ${spaces}`;
+          // Validation switch on input
+          inputAsistentes.addEventListener('input', function () {
+            if (parseInt(this.value) > spaces) {
+              this.value = spaces;
+            }
+          });
+        }
+      } else {
+        // If no valid parameter (isNaN or missing), use default state:
+        // "un espacio" is already in HTML, but let's ensure the input is handled
+        if (inputAsistentes) {
+          inputAsistentes.value = 1;
+        }
+        if (wrapAsistentes) {
+          wrapAsistentes.style.display = 'none';
+        }
+      }
+    })();
+
+    // FORM SUBMISSION LOGIC (RSVP)
+    (function () {
+      const form = document.getElementById('formulario-rsvp');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const btn = document.getElementById('btn-enviar');
+        const msg = document.getElementById('mensaje-exito');
+
+        // Additional client-side validation for the limit
+        const inputAsistentes = document.getElementById('campo-2');
+        const urlParams = new URLSearchParams(window.location.search);
+        const spaces = urlParams.get('p');
+        if (spaces && parseInt(inputAsistentes.value) > parseInt(spaces)) {
+          alert(`Lo sentimos, solo puedes confirmar hasta ${spaces} personas.`);
+          return;
+        }
+
+        btn.disabled = true;
+        const originalBtnText = btn.innerText;
+        btn.innerText = 'Enviando...';
+
+        const formData = new URLSearchParams();
+        const orden = [];
+
+        Array.from(this.elements).forEach(el => {
+          if (!el.name || el.disabled) return;
+          const wrap = el.closest('.campo-formulario');
+          // Send if visible OR if it's the quantity field (even if hidden by default logic)
+          if (!wrap || wrap.style.display !== 'none' || el.id === 'campo-2') {
+            formData.append(el.name, el.value);
+            if (el.name !== 'sheetId') {
+              orden.push(el.name);
+            }
+          }
+        });
+
+        formData.append('ordenPreguntas', orden.join(','));
+
+        fetch('https://script.google.com/macros/s/AKfycbx0hTDSsoFhO85qmotKrMJwinD-DpU93UfVqD1SlQhw5_saPLXFkSeAINnd7iuYzB8U/exec', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        })
+          .then(res => {
+            if (!res.ok) throw new Error('Error en el servidor');
+            this.style.display = 'none';
+            msg.style.display = 'block';
+          })
+          .catch(err => {
+            console.error('Error RSVP:', err);
+            alert('Error al enviar. Intenta de nuevo.');
+            btn.disabled = false;
+            btn.innerText = originalBtnText;
+          });
+      });
+    })();
+  </script>
+</body>
+
+</html>

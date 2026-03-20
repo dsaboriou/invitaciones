@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primera Comunión - Santiago</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --color-primary: #8a7d6b; /* Warm grey/brown */
+            --color-accent: #d4af37;  /* Muted Gold */
+            --color-bg: #fdfbf7;      /* Warm off-white */
+        }
+
+        body {
+            background-color: var(--color-bg);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-primary);
+            overflow-x: hidden;
+        }
+
+        .font-serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            opacity: 0;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.3s; }
+        .delay-300 { animation-delay: 0.5s; }
+        .delay-400 { animation-delay: 0.7s; }
+        .delay-500 { animation-delay: 0.9s; }
+
+        /* Floating particles effect */
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(212,175,55,0.4) 0%, rgba(212,175,55,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Card Container Styling */
+        .invitation-card {
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            box-shadow: 0 20px 40px -10px rgba(138, 125, 107, 0.15);
+            position: relative;
+            z-index: 10;
+        }
+
+        .decorative-border {
+            position: absolute;
+            top: 15px;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            pointer-events: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-8 relative">
+    
+    <!-- Particles Container -->
+    <div id="particles" class="fixed inset-0 overflow-hidden pointer-events-none"></div>
+
+    <!-- Main Invitation Card -->
+    <div class="invitation-card w-full max-w-md rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden animate-fade-in-up">
+        <div class="decorative-border"></div>
+
+        <!-- Top Decoration (Cross) -->
+        <div class="flex justify-center mb-6 animate-float">
+            <svg width="40" height="60" viewBox="0 0 40 60" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="20" y1="5" x2="20" y2="55"/>
+                <line x1="8" y1="20" x2="32" y2="20"/>
+            </svg>
+        </div>
+
+        <!-- Header -->
+        <h2 class="text-sm tracking-[0.2em] uppercase mb-4 text-[#a39683] animate-fade-in-up delay-100">
+            Mi Primera Comunión
+        </h2>
+
+        <!-- Name -->
+        <h1 class="font-serif text-5xl sm:text-6xl text-[#5c5346] mb-8 animate-fade-in-up delay-200">
+            Santiago
+        </h1>
+
+        <!-- Message -->
+        <div class="animate-fade-in-up delay-300 relative z-10">
+            <p class="text-sm sm:text-base leading-relaxed mb-8 px-4 font-light">
+                "Jesús, que hoy te recibo por primera vez, seas mi guía y mi luz por siempre."
+                <br><br>
+                Acompáñame a celebrar este día tan especial junto a mi familia.
+            </p>
+        </div>
+
+        <!-- Date & Time -->
+        <div class="mb-10 animate-fade-in-up delay-400">
+            <div class="flex items-center justify-center space-x-4 text-lg">
+                <div class="text-right border-r border-[#d4af37] pr-4">
+                    <span class="block font-serif text-3xl text-[#5c5346]">15</span>
+                    <span class="block text-xs uppercase tracking-widest text-[#a39683]">Mayo</span>
+                </div>
+                <div class="text-left pl-2">
+                    <span class="block font-serif text-2xl text-[#5c5346]">11:00</span>
+                    <span class="block text-xs uppercase tracking-widest text-[#a39683]">AM</span>
+                </div>
+            </div>
+            
+            <p class="mt-6 text-sm font-medium text-[#5c5346]">
+                Parroquia San José<br>
+                <span class="text-xs font-light text-[#a39683]">Recepción a continuación en el Salón de Eventos</span>
+            </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="space-y-4 relative z-10 animate-fade-in-up delay-500">
+            
+            <!-- WhatsApp Button -->
+            <!-- NOTA: Cambia el número "1234567890" por tu número real con código de país (ej: 50688888888 para Costa Rica) -->
+            <a href="https://wa.me/1234567890?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20Primera%20Comunión%20de%20Santiago." 
+               target="_blank"
+               class="flex items-center justify-center w-full py-3 px-6 rounded-full bg-[#f0ede6] hover:bg-[#e8e4db] transition-colors duration-300 text-[#5c5346] text-sm font-medium tracking-wide shadow-sm group">
+                <i class="fa-brands fa-whatsapp text-xl mr-3 text-[#25D366] group-hover:scale-110 transition-transform"></i>
+                Confirmar Asistencia
+            </a>
+
+            <!-- Waze Button -->
+            <!-- NOTA: Cambia la URL de Waze por el enlace directo de tu ubicación -->
+            <a href="https://waze.com/ul?ll=9.9281,-84.0907&navigate=yes" 
+               target="_blank"
+               class="flex items-center justify-center w-full py-3 px-6 rounded-full bg-[#f0ede6] hover:bg-[#e8e4db] transition-colors duration-300 text-[#5c5346] text-sm font-medium tracking-wide shadow-sm group">
+                <i class="fa-brands fa-waze text-xl mr-3 text-[#33ccff] group-hover:scale-110 transition-transform"></i>
+                Ubicación del Evento
+            </a>
+
+        </div>
+
+        <!-- Bottom Decoration -->
+        <div class="mt-10 flex justify-center opacity-50">
+            <svg width="60" height="20" viewBox="0 0 60 20" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round">
+                <path d="M10 10 Q 30 0 50 10" />
+                <circle cx="30" cy="10" r="2" fill="var(--color-accent)"/>
+                <circle cx="15" cy="8" r="1.5" fill="var(--color-accent)"/>
+                <circle cx="45" cy="8" r="1.5" fill="var(--color-accent)"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Subtle Particle Animation Script
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 15; // Number of floating lights
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 10px and 40px
+                const size = Math.random() * 30 + 10;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                
+                // Random animation duration and delay
+                const duration = Math.random() * 10 + 10; // 10s to 20s
+                const delay = Math.random() * 5;
+                
+                // Setup keyframes for individual particles using JS to make them unique
+                particle.animate([
+                    { transform: 'translate(0, 0) scale(1)', opacity: 0 },
+                    { transform: `translate(${Math.random() * 50 - 25}px, -${Math.random() * 100 + 50}px) scale(1.5)`, opacity: 0.6, offset: 0.5 },
+                    { transform: `translate(${Math.random() * 100 - 50}px, -${Math.random() * 200 + 100}px) scale(1)`, opacity: 0 }
+                ], {
+                    duration: duration * 1000,
+                    delay: delay * 1000,
+                    iterations: Infinity,
+                    easing: 'ease-in-out'
+                });
+
+                container.appendChild(particle);
+            }
+        }
+
+        // Run particle creation on load
+        window.onload = createParticles;
+    </script>
+</body>
+</html>

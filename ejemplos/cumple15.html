@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis 15 Años - Sofía Valentina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #fce4ec;
+            --accent-pink: #f06292;
+            --gold: #d4af37;
+            --deep-rose: #ad1457;
+            --dark-overlay: rgba(20, 0, 10, 0.85);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fff5f8;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-orb {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: float-orb 20s infinite alternate;
+        }
+        .orb-1 { background: #fce4ec; top: -100px; left: -100px; }
+        .orb-2 { background: #f8bbd0; bottom: -100px; right: -100px; animation-delay: -5s; }
+        .orb-3 { background: #f3e5f5; top: 40%; left: 30%; animation-duration: 25s; }
+
+        @keyframes float-orb {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(100px, 50px) scale(1.2); }
+        }
+
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-cursive { font-family: 'Great Vibes', cursive; }
+        
+        .sparkles {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+            background-size: 80px 80px;
+            animation: move-sparkles 15s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes move-sparkles {
+            from { background-position: 0 0; }
+            to { background-position: 160px 160px; }
+        }
+
+        .hero-section {
+            background: url('https://plus.unsplash.com/premium_photo-1673792686366-27a26e9d5ea5?q=80&w=1740&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 20%;
+            height: 95vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+            clip-path: ellipse(160% 100% at 50% 0%);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0; height: 75%;
+            background: linear-gradient(to top, var(--dark-overlay) 0%, rgba(20, 0, 10, 0.3) 60%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 2.5rem;
+            box-shadow: 0 15px 35px rgba(240, 98, 146, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 25px 50px rgba(240, 98, 146, 0.2);
+        }
+
+        .shine-text {
+            position: relative;
+            display: inline-block;
+        }
+        .shine-text::after {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-25deg);
+            animation: text-shine 4s infinite;
+        }
+
+        @keyframes text-shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        /* REDISEÑO BOTÓN MÚSICA */
+        .music-player-btn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(240, 98, 146, 0.2);
+            box-shadow: 0 8px 32px rgba(240, 98, 146, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            color: var(--accent-pink);
+        }
+
+        .music-player-btn.is-playing {
+            animation: rotate-disc 8s linear infinite;
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 20px rgba(240, 98, 146, 0.4);
+        }
+
+        @keyframes rotate-disc {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .music-note-icon {
+            width: 28px;
+            height: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .is-playing .music-note-icon {
+            transform: scale(1.1);
+        }
+
+        /* Modal styling */
+        #demo-modal {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.7); align-items: center; justify-content: center;
+            z-index: 100; backdrop-filter: blur(8px);
+        }
+
+        .btn-quince {
+            background: linear-gradient(45deg, var(--accent-pink), var(--deep-rose));
+            color: white;
+            box-shadow: 0 4px 15px rgba(240, 98, 146, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <!-- Orbes de fondo -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <!-- Modal -->
+    <div id="demo-modal" onclick="closeModal()">
+        <div class="bg-white/90 p-10 rounded-3xl shadow-2xl text-center max-w-sm mx-4 border border-pink-100 backdrop-blur-md">
+            <div class="text-6xl mb-4">👑</div>
+            <h3 class="font-serif text-2xl mb-2 text-[#ad1457]">Muestra Digital</h3>
+            <p class="text-gray-500 italic">"Este es un diseño de exhibición. Las funciones se activan en la invitación real."</p>
+            <button class="mt-8 px-12 py-3 btn-quince rounded-full uppercase text-xs tracking-widest font-bold">Entendido</button>
+        </div>
+    </div>
+
+    <!-- RE-DISEÑO: Music Control Minimalista -->
+    <div id="music-control" class="fixed bottom-8 right-8 z-50">
+        <button onclick="toggleMusic()" id="music-btn" class="music-player-btn group">
+            <!-- Icono Nota Musical -->
+            <svg id="note-svg" class="music-note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+            </svg>
+            
+            <!-- Indicador de "Click para Play" sutil -->
+            <div id="play-hint" class="absolute -top-1 -right-1 flex h-4 w-4">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-4 w-4 bg-pink-500"></span>
+            </div>
+        </button>
+    </div>
+
+    <div id="player" class="hidden"></div>
+
+    <!-- Hero Section -->
+    <header class="relative hero-section pb-28 overflow-hidden">
+        <div class="hero-overlay"></div>
+        <div class="sparkles"></div>
+        
+        <div class="relative z-10 text-center px-6 animate-fade-in-up">
+            <h3 class="font-serif italic text-white/80 text-xl mb-3 tracking-[0.3em]">Mis Dulces Quince</h3>
+            <div class="shine-text">
+                <h1 class="font-cursive text-7xl md:text-9xl text-[#f06292] mb-4 drop-shadow-2xl">Sofía Valentina</h1>
+            </div>
+            <div class="w-40 h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mb-6"></div>
+            <p class="font-serif tracking-[0.5em] text-[10px] md:text-xs uppercase text-white/90 font-bold bg-white/10 backdrop-blur-md px-4 py-2 rounded-full inline-block border border-white/20">¡Estás Invitado!</p>
+        </div>
+    </header>
+
+    <!-- Countdown Section -->
+    <section class="py-16 -mt-16 relative z-20 px-4">
+        <div class="max-w-4xl mx-auto glass-card py-12 shadow-2xl">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-400 to-transparent opacity-50"></div>
+            
+            <div class="text-center mb-10">
+                <h4 class="font-serif italic text-gray-400 text-lg uppercase tracking-widest">El gran momento llegará en...</h4>
+            </div>
+            
+            <div class="flex justify-center items-center gap-4 md:gap-12 flex-wrap">
+                <div class="text-center group">
+                    <span id="days" class="text-5xl md:text-7xl font-serif text-[#ad1457]">00</span>
+                    <p class="text-[10px] uppercase text-pink-400 font-bold tracking-widest mt-2">Días</p>
+                </div>
+                <div class="h-12 w-px bg-pink-100 hidden md:block opacity-30"></div>
+                <div class="text-center group">
+                    <span id="hours" class="text-5xl md:text-7xl font-serif text-[#ad1457]">00</span>
+                    <p class="text-[10px] uppercase text-pink-400 font-bold tracking-widest mt-2">Horas</p>
+                </div>
+                <div class="h-12 w-px bg-pink-100 hidden md:block opacity-30"></div>
+                <div class="text-center group">
+                    <span id="minutes" class="text-5xl md:text-7xl font-serif text-[#ad1457]">00</span>
+                    <p class="text-[10px] uppercase text-pink-400 font-bold tracking-widest mt-2">Mins</p>
+                </div>
+                <div class="h-12 w-px bg-pink-100 hidden md:block opacity-30"></div>
+                <div class="text-center group">
+                    <span id="seconds" class="text-5xl md:text-7xl font-serif text-pink-300">00</span>
+                    <p class="text-[10px] uppercase text-pink-400 font-bold tracking-widest mt-2">Segs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Text -->
+    <section class="py-24 text-center px-6 max-w-4xl mx-auto relative">
+        <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15rem] font-cursive text-pink-100/30 select-none">XV</div>
+        <h2 class="font-cursive text-6xl text-[#ad1457] mb-8">Un sueño hecho realidad</h2>
+        <p class="text-xl leading-relaxed text-gray-600 italic font-serif">
+            "Hace quince años, una estrella iluminó mi hogar. Hoy, esa luz brilla más que nunca y quiero que seas testigo de la noche más mágica de mi vida. Acompáñame a celebrar mis XV años entre risas, baile y mucha alegría."
+        </p>
+    </section>
+
+    <!-- Details Grid -->
+    <section class="py-12 px-4 relative">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-stretch">
+            <div class="glass-card p-10 md:p-14 text-center flex flex-col justify-center items-center">
+                <h3 class="font-serif text-4xl text-[#ad1457] mb-10 tracking-wide underline decoration-pink-100 underline-offset-8">La Gran Noche</h3>
+                <div class="space-y-10 w-full relative z-10">
+                    <div class="group">
+                        <div class="inline-block p-3 rounded-2xl bg-pink-50 text-pink-400 mb-3 group-hover:bg-pink-400 group-hover:text-white transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                        </div>
+                        <p id="event-date-full" class="font-bold uppercase tracking-[0.2em] text-sm text-pink-600">Cargando...</p>
+                    </div>
+                    <div class="group">
+                        <div class="inline-block p-3 rounded-2xl bg-pink-50 text-pink-400 mb-3 group-hover:bg-pink-400 group-hover:text-white transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <p class="text-gray-500 text-sm font-semibold">Recepción: 19:00 hrs · Cena: 20:30 hrs</p>
+                    </div>
+                    <div class="group">
+                        <div class="inline-block p-3 rounded-2xl bg-pink-50 text-pink-400 mb-3 group-hover:bg-pink-400 group-hover:text-white transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
+                        </div>
+                        <p class="font-semibold text-xl text-gray-800 tracking-tight">Quinta Las Rosas</p>
+                    </div>
+                    <button onclick="showDemo()" class="btn-quince px-10 py-4 rounded-full inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest mt-6">📍 Ubicación Waze</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 items-center">
+                <div class="h-64 rounded-[3rem] overflow-hidden shadow-2xl transform -rotate-3 hover:rotate-0 transition-all duration-700 border-4 border-white">
+                    <img src="https://plus.unsplash.com/premium_photo-1673792686366-27a26e9d5ea5?w=500" class="w-full h-full object-cover">
+                </div>
+                <div class="h-72 rounded-[3rem] overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-700 border-4 border-white">
+                    <img src="https://plus.unsplash.com/premium_photo-1673792686133-940b45c55823?w=500" class="w-full h-full object-cover">
+                </div>
+                <div class="h-72 rounded-[3rem] overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-700 border-4 border-white -mt-10">
+                    <img src="https://plus.unsplash.com/premium_photo-1673792686302-7555a74de717?w=500" class="w-full h-full object-cover">
+                </div>
+                <div class="h-64 rounded-[3rem] overflow-hidden shadow-2xl transform -rotate-6 hover:rotate-0 transition-all duration-700 border-4 border-white mt-10">
+                    <img src="https://plus.unsplash.com/premium_photo-1673792686442-5339992b933a?w=500" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="py-32 px-6 relative">
+        <div class="max-w-2xl mx-auto glass-card p-12 md:p-16 text-center shadow-[0_50px_100px_-20px_rgba(240,98,146,0.3)]">
+            <h3 class="font-serif text-5xl text-[#ad1457] mb-6 italic tracking-tight">¿Nos acompañas?</h3>
+            <p class="text-gray-500 mb-10 text-lg">Tu presencia hará que esta noche sea perfecta.</p>
+            <div class="space-y-6 relative z-10">
+                <input type="text" placeholder="Escribe tu nombre completo..." class="w-full px-8 py-6 rounded-3xl border-2 border-pink-50 focus:border-pink-300 focus:outline-none text-center bg-white/50 backdrop-blur-sm shadow-inner transition-all text-lg placeholder-pink-200">
+                <button onclick="showDemo()" class="btn-quince w-full py-6 rounded-3xl text-lg font-bold uppercase tracking-[0.3em] shadow-xl">Confirmar ✨</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 bg-white/30 backdrop-blur-md text-center border-t border-pink-50">
+        <p class="font-cursive text-5xl text-pink-400">Sofía Valentina</p>
+        <p id="footer-year" class="text-xs tracking-[0.5em] text-gray-400 font-bold uppercase mt-4">Mis Quince Años</p>
+    </footer>
+
+    <script>
+        const hoy = new Date();
+        const fechaEvento = new Date(hoy.getTime() + (15 * 24 * 60 * 60 * 1000));
+        fechaEvento.setHours(19, 0, 0, 0); 
+
+        const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('event-date-full').innerText = fechaEvento.toLocaleDateString('es-ES', opcionesFecha);
+        document.getElementById('footer-year').innerText = `Mis Quince Años · ${fechaEvento.getFullYear()}`;
+
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0', width: '0',
+                videoId: 'IcAT9UoCEIY',
+                playerVars: { 'autoplay': 0, 'controls': 0, 'modestbranding': 1, 'loop': 1, 'playlist': 'IcAT9UoCEIY' }
+            });
+        }
+
+        let isPlaying = false;
+        function toggleMusic() {
+            if (!player) return;
+            const btn = document.getElementById('music-btn');
+            const hint = document.getElementById('play-hint');
+            
+            if (isPlaying) {
+                player.pauseVideo();
+                btn.classList.remove('is-playing');
+                hint.style.display = 'flex';
+            } else {
+                player.playVideo();
+                btn.classList.add('is-playing');
+                hint.style.display = 'none';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = fechaEvento.getTime() - now;
+            if (distance < 0) return;
+            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }, 1000);
+
+        function showDemo() { document.getElementById('demo-modal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('demo-modal').style.display = 'none'; }
+    </script>
+</body>
+</html>

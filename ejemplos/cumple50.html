@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cincuenta Años - Gala Ricardo Aranda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #030712; 
+            --gold-shadow: #3a220b;
+            --gold-mid: #a67c00;
+            --gold-bright: #d4af37;
+            --gold-highlight: #fcf6ba;
+            --gold-white: #ffffff;
+            
+            --premium-gold-gradient: linear-gradient(
+                to right,
+                #3a220b 0%,
+                #a67c00 22%,
+                #fcf6ba 45%,
+                #ffffff 50%,
+                #fcf6ba 55%,
+                #a67c00 78%,
+                #3a220b 100%
+            );
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: #f8fafc;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 10%;
+        }
+
+        #hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            /* Brillo ajustado para evitar que sea molesto */
+            filter: brightness(0.45) contrast(1.2);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            /* Overlay ajustado para dar más contraste al texto central */
+            background: radial-gradient(circle at center, transparent 0%, rgba(3, 7, 18, 0.7) 100%),
+                        linear-gradient(to bottom, transparent 60%, var(--dark-bg) 100%);
+            z-index: 1;
+        }
+
+        .gold-text {
+            background: var(--premium-gold-gradient);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
+            animation: goldShine 6s linear infinite;
+        }
+
+        @keyframes goldShine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .odometer {
+            display: inline-flex;
+            height: 1.2em;
+            line-height: 1.2em;
+            overflow: hidden;
+            vertical-align: middle;
+            font-weight: 900;
+        }
+
+        .wheel {
+            display: flex;
+            flex-direction: column;
+            transition: transform 4s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(0);
+        }
+
+        .wheel span {
+            display: block;
+            height: 1.2em;
+            background: var(--premium-gold-gradient);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 2.5rem;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8);
+            transition: all 0.5s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(252, 246, 186, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-8px);
+        }
+
+        .btn-gold {
+            background: var(--premium-gold-gradient);
+            background-size: 200% auto;
+            color: #1a0f00;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-gold:hover {
+            background-position: right center;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .music-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #a67c00;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .music-btn.playing {
+            border-color: #ffffff;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .reveal {
+            opacity: 0;
+            animation: fadeInUp 2s forwards;
+            z-index: 10;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--premium-gold-gradient);
+            width: 80px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        .container-padding {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        #demo-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+        }
+
+        @media (min-width: 768px) {
+            .container-padding {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Modal de Muestra -->
+    <div id="demo-modal" onclick="closeModal()">
+        <div class="glass-card p-12 max-w-sm mx-auto text-center border-t-4 border-[#fcf6ba]">
+            <h3 class="font-serif text-3xl gold-text mb-6 font-black uppercase tracking-tight">Invitación de Muestra</h3>
+            <p class="text-white/80 mb-10 leading-relaxed italic">"Este es un diseño interactivo de exhibición. Las funciones completas estarán disponibles en la invitación final."</p>
+            <button class="px-10 py-4 btn-gold rounded-full text-[11px] font-black uppercase tracking-widest w-full">Entendido</button>
+        </div>
+    </div>
+
+    <!-- Control Música -->
+    <div class="fixed bottom-10 right-10 z-50">
+        <button onclick="toggleMusic()" id="music-btn" class="music-btn group">
+            <svg class="w-6 h-6 text-[#fcf6ba]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+            </svg>
+        </button>
+    </div>
+    <div id="player" class="hidden"></div>
+
+    <!-- Hero Section con video ajustado -->
+    <header class="hero-section text-center">
+        <video autoplay muted loop playsinline id="hero-video">
+            <source src="https://cdn.pixabay.com/video/2020/11/07/55595-502387700_large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        
+        <div class="max-w-3xl reveal relative mx-auto px-6">
+            <p class="uppercase tracking-[0.8em] text-[10px] md:text-xs mb-10 text-white/40 font-bold">Reserva el Gran Día</p>
+            
+            <h1 class="font-serif text-5xl md:text-8xl mb-10 font-black tracking-tight text-white leading-tight">
+                MIS 
+                <span class="odometer">
+                    <div id="wheel-1" class="wheel">
+                        <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+                    </div>
+                    <div id="wheel-2" class="wheel">
+                        <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+                    </div>
+                </span> 
+                AÑOS
+            </h1>
+            
+            <div class="divider mb-12"></div>
+            
+            <h2 class="font-serif text-4xl md:text-7xl italic gold-text mb-12 tracking-tighter">Ricardo Aranda</h2>
+            
+            <p class="font-light tracking-[0.4em] text-[10px] md:text-xs max-w-xs mx-auto text-white/70 uppercase leading-loose">
+                Celebrando medio siglo de vida, <br>sabiduría y grandes momentos.
+            </p>
+        </div>
+    </header>
+
+    <!-- Cuenta Regresiva -->
+    <section class="py-40 bg-[#030712] container-padding">
+        <div class="max-w-4xl mx-auto glass-card py-24 px-8 text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#fcf6ba] to-transparent opacity-30"></div>
+            <h3 class="font-serif text-xl uppercase tracking-[0.5em] text-white/40 mb-20">Cronología de la Gala</h3>
+            <div class="flex justify-center gap-10 md:gap-24 flex-wrap">
+                <div class="text-center group">
+                    <span id="days" class="text-5xl md:text-8xl font-serif text-white group-hover:text-[#fcf6ba] transition-all duration-500">00</span>
+                    <p class="text-[9px] uppercase tracking-[0.4em] gold-text mt-5 font-bold">Días</p>
+                </div>
+                <div class="text-center group">
+                    <span id="hours" class="text-5xl md:text-8xl font-serif text-white">00</span>
+                    <p class="text-[9px] uppercase tracking-[0.4em] gold-text mt-5 font-bold">Horas</p>
+                </div>
+                <div class="text-center group">
+                    <span id="minutes" class="text-5xl md:text-8xl font-serif text-white">00</span>
+                    <p class="text-[9px] uppercase tracking-[0.4em] gold-text mt-5 font-bold">Mins</p>
+                </div>
+                <div class="text-center group">
+                    <span id="seconds" class="text-5xl md:text-8xl font-serif text-white/40">00</span>
+                    <p class="text-[9px] uppercase tracking-[0.4em] gold-text mt-5 font-bold">Segs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Fotos -->
+    <section class="py-40 bg-slate-950 container-padding">
+        <div class="max-w-6xl mx-auto text-center">
+            <h3 class="font-serif text-4xl md:text-5xl gold-text mb-20 italic font-light tracking-wide">Historias de Medio Siglo</h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+                <div class="group relative overflow-hidden rounded-[2rem] h-[500px] shadow-2xl border border-white/5">
+                    <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=2048" class="w-full h-full object-cover transform group-hover:scale-110 grayscale group-hover:grayscale-0 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-all flex items-end p-10">
+                        <p class="text-white text-[10px] tracking-[0.3em] uppercase font-bold">Legado</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-[2rem] h-[500px] shadow-2xl md:mt-24 border border-white/5">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2000" class="w-full h-full object-cover transform group-hover:scale-110 grayscale group-hover:grayscale-0 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-all flex items-end p-10">
+                        <p class="text-white text-[10px] tracking-[0.3em] uppercase font-bold">Sabiduría</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-[2rem] h-[500px] shadow-2xl border border-white/5">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070" class="w-full h-full object-cover transform group-hover:scale-110 grayscale group-hover:grayscale-0 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-all flex items-end p-10">
+                        <p class="text-white text-[10px] tracking-[0.3em] uppercase font-bold">Aventuras</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-[2rem] h-[500px] shadow-2xl md:mt-24 border border-white/5">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2000" class="w-full h-full object-cover transform group-hover:scale-110 grayscale group-hover:grayscale-0 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-all flex items-end p-10">
+                        <p class="text-white text-[10px] tracking-[0.3em] uppercase font-bold">Gratitud</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detalles -->
+    <section class="py-40 bg-slate-900 container-padding relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold-mid/10 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-gold-bright/10 blur-[120px] rounded-full"></div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 md:gap-32 items-center relative z-10">
+            <div class="space-y-24 text-center md:text-left">
+                <div class="reveal">
+                    <h3 class="font-serif text-5xl gold-text mb-8 font-bold tracking-tight text-white">La Gala</h3>
+                    <p id="event-date-text" class="text-2xl font-light tracking-widest uppercase mb-6 text-white/90">Cargando...</p>
+                    <p class="text-white/60 font-medium tracking-widest text-[11px] uppercase italic leading-loose">Cóctel de Bienvenida: 20:00 hrs <br> Cena de Gala: 21:30 hrs</p>
+                </div>
+                <div class="reveal">
+                    <h3 class="font-serif text-5xl gold-text mb-8 font-bold tracking-tight text-white">La Ubicación</h3>
+                    <p class="text-2xl font-bold uppercase mb-6 tracking-tighter text-white">Salón Imperial - Hotel del Sol</p>
+                    <p class="text-white/60 mb-12 font-light tracking-wide text-sm">Avenida de los Pioneros, Distrito Financiero.</p>
+                    <button onclick="showDemo()" class="btn-gold px-14 py-5 rounded-full text-[10px] shadow-2xl">
+                        Ver Ubicación por Waze
+                    </button>
+                </div>
+            </div>
+            <div class="relative group mx-auto md:mx-0 w-full max-w-md md:max-w-none">
+                <div class="absolute -inset-6 border border-[#a67c00]/30 rounded-[3.5rem] group-hover:rotate-0 rotate-3 transition-all duration-1000"></div>
+                <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070" class="rounded-[3rem] w-full h-[650px] object-cover shadow-[0_50px_100px_rgba(0,0,0,0.9)] border-4 border-white/5 grayscale hover:grayscale-0 transition-all duration-1000">
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmación -->
+    <section class="py-48 bg-slate-950 container-padding">
+        <div class="max-w-2xl mx-auto glass-card p-12 md:p-20 text-center border-t border-white/10 shadow-2xl">
+            <h3 class="font-serif text-6xl gold-text mb-10 font-black italic">Confirmación</h3>
+            <p class="text-white/70 mb-16 font-light text-lg tracking-wide leading-relaxed px-4">Su distinguida presencia será el mayor honor en esta celebración.</p>
+            <div class="space-y-12 max-w-md mx-auto">
+                <input type="text" placeholder="Nombre Completo" class="w-full bg-white/5 border-b border-white/20 py-6 px-4 focus:outline-none focus:border-[#fcf6ba] transition-all text-center text-xl text-white placeholder-white/10 font-serif">
+                <button onclick="showDemo()" class="w-full py-6 btn-gold rounded-full text-[11px] font-black tracking-widest uppercase">Confirmar Asistencia</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-32 text-center border-t border-white/5 bg-[#030712]">
+        <p class="font-serif italic text-4xl gold-text mb-6">Ricardo Aranda</p>
+        <p class="text-[11px] uppercase tracking-[0.8em] text-white/30 font-bold">Medio Siglo de Excelencia · 2026</p>
+    </footer>
+
+    <script>
+        function showDemo() {
+            document.getElementById('demo-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('demo-modal').style.display = 'none';
+        }
+
+        window.onload = function() {
+            setTimeout(() => {
+                const wheel1 = document.getElementById('wheel-1');
+                const wheel2 = document.getElementById('wheel-2');
+                wheel1.style.transform = 'translateY(-6em)'; 
+                wheel2.style.transform = 'translateY(0em)';
+            }, 1000);
+        };
+
+        const hoy = new Date();
+        const fechaEvento = new Date(hoy.getTime() + (15 * 24 * 60 * 60 * 1000));
+        fechaEvento.setHours(20, 0, 0, 0); 
+
+        const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('event-date-text').innerText = fechaEvento.toLocaleDateString('es-ES', opciones);
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = fechaEvento.getTime() - now;
+            if (distance < 0) return;
+            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }, 1000);
+
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0', width: '0',
+                videoId: '5ar42kauTd8', 
+                playerVars: { 'autoplay': 0, 'controls': 0, 'loop': 1, 'playlist': '5ar42kauTd8' }
+            });
+        }
+
+        let isPlaying = false;
+        function toggleMusic() {
+            if (!player) return;
+            const btn = document.getElementById('music-btn');
+            if (isPlaying) {
+                player.pauseVideo();
+                btn.classList.remove('playing');
+            } else {
+                player.playVideo();
+                btn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+    </script>
+</body>
+</html>

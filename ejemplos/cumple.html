@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Cumple de Michelle! 🥳</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000000;
+        }
+
+        /* Degradado Fiestero Animado SOLO PARA MÓVIL */
+        .bg-dynamic {
+            background: linear-gradient(-45deg, #1db954, #6617cb, #e94057, #121212);
+            background-size: 300% 300%;
+            animation: gradientBG 12s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .bg-desktop-magenta {
+            background: linear-gradient(135deg, #d41c5c 0%, #790d33 100%);
+        }
+
+        /* Resplandor Neon */
+        .neon-pulse {
+            animation: neon-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes neon-glow {
+            from { box-shadow: 0 0 20px rgba(233, 64, 87, 0.4), 0 15px 30px rgba(0, 0, 0, 0.5); transform: scale(1); }
+            to { box-shadow: 0 0 40px rgba(29, 185, 84, 0.6), 0 15px 40px rgba(0, 0, 0, 0.6); transform: scale(1.02); }
+        }
+
+        /* Luces de Fiesta / Reflectores - AJUSTADO Z-INDEX */
+        .party-lights {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50; /* Por encima de todo */
+            display: none;
+            mix-blend-mode: screen; /* Para que brillen sobre el fondo */
+        }
+
+        .spotlight {
+            position: absolute;
+            width: 60vw;
+            height: 150vh;
+            background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.4) 0%, transparent 70%);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            filter: blur(40px);
+            transform-origin: top center;
+            opacity: 0.5;
+        }
+
+        /* Colores más vivos para los reflectores */
+        .light-1 { left: -10%; animation: swing 4s ease-in-out infinite alternate; background: radial-gradient(circle at 50% 0%, rgba(29, 185, 84, 0.6) 0%, transparent 75%); }
+        .light-2 { right: -10%; animation: swing 5s ease-in-out infinite alternate-reverse; background: radial-gradient(circle at 50% 0%, rgba(233, 64, 87, 0.6) 0%, transparent 75%); }
+        .light-3 { left: 20%; animation: swing 6s ease-in-out infinite alternate; background: radial-gradient(circle at 50% 0%, rgba(102, 23, 203, 0.6) 0%, transparent 75%); }
+
+        @keyframes swing {
+            0% { transform: rotate(-35deg); }
+            100% { transform: rotate(35deg); }
+        }
+
+        /* Emojis flotantes (Solo Móvil) */
+        .emoji-float {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatUp linear infinite;
+        }
+        
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-20vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        .e1 { left: 10%; animation-duration: 12s; animation-delay: 0s; font-size: 2rem; }
+        .e2 { left: 30%; animation-duration: 15s; animation-delay: 2s; }
+        .e3 { left: 60%; animation-duration: 10s; animation-delay: 5s; font-size: 2.5rem; }
+        .e4 { left: 85%; animation-duration: 14s; animation-delay: 1s; }
+        .e5 { left: 50%; animation-duration: 13s; animation-delay: 7s; }
+
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+    </style>
+</head>
+<body class="text-white h-[100dvh] w-screen overflow-hidden selection:bg-green-500 selection:text-white relative">
+
+    <!-- Capa de Luces de Fiesta (Ahora al frente) -->
+    <div id="party-lights" class="party-lights">
+        <div class="spotlight light-1"></div>
+        <div class="spotlight light-2"></div>
+        <div class="spotlight light-3"></div>
+    </div>
+
+    <!-- Animación de emojis (Solo Móvil) -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0 md:hidden">
+        <span class="emoji-float e1">🪩</span>
+        <span class="emoji-float e2">🥂</span>
+        <span class="emoji-float e3">✨</span>
+        <span class="emoji-float e4">🥳</span>
+        <span class="emoji-float e5">🎶</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VISTA MÓVIL -->
+    <!-- ========================================== -->
+    <div id="mobile-view" class="md:hidden flex h-full w-full flex-col justify-between p-5 pb-6 relative z-10 bg-dynamic overflow-hidden">
+        
+        <div class="flex justify-between items-center shrink-0">
+            <i class="fas fa-chevron-down text-white/70 text-lg"></i>
+            <div class="text-center">
+                <p class="text-[9px] font-medium text-white/80 tracking-widest uppercase">Playlist de la fiesta</p>
+                <p class="text-xs font-semibold text-white">¡No puedes faltar!</p>
+            </div>
+            <i class="fas fa-ellipsis-v text-white/70 text-lg"></i>
+        </div>
+
+        <div class="flex-1 flex items-center justify-center min-h-0 py-4">
+            <div class="max-h-full aspect-square rounded-2xl overflow-hidden relative shadow-[0_15px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-500 js-cover-art border border-white/10">
+                <img src="https://images.unsplash.com/photo-1590627339432-16bcfcec24c7?q=80&w=928&auto=format&fit=crop" alt="Foto de Michelle" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="shrink-0">
+            <div class="flex justify-between items-center mb-3 px-1">
+                <div class="max-w-[80%]">
+                    <h2 class="text-2xl font-bold mb-0.5 leading-tight drop-shadow-lg truncate">¡Mi Cumpleaños! 🎂</h2>
+                    <p class="text-white/80 text-sm font-normal truncate">Michelle • Prepara tu mejor outfit</p>
+                </div>
+                <i class="far fa-heart text-2xl text-green-400"></i>
+            </div>
+
+            <div class="w-full mb-4">
+                <div class="h-1 bg-white/20 rounded-full relative overflow-hidden">
+                    <div class="h-full bg-white rounded-full w-0 transition-all duration-300 js-progress-bar shadow-[0_0_8px_#fff]"></div>
+                </div>
+                <div class="flex justify-between text-[10px] text-white/70 mt-1.5 font-mono font-medium tracking-tighter">
+                    <span class="js-current-time">0:00</span>
+                    <span class="js-total-time">0:00</span>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center mb-5 px-4 relative">
+                <i class="fas fa-random text-white/70 text-lg"></i>
+                <i class="fas fa-step-backward text-white text-3xl"></i>
+                
+                <div class="absolute -top-7 left-1/2 transform -translate-x-1/2 text-[9px] text-white bg-green-500 px-3 py-1 rounded-full font-bold uppercase tracking-widest animate-bounce js-play-hint shadow-lg whitespace-nowrap">
+                    ¡Dale play! 🎧
+                </div>
+
+                <div onclick="togglePlayPause()" class="bg-green-500 text-black rounded-full w-14 h-14 flex items-center justify-center cursor-pointer hover:scale-105 transition transform shadow-[0_0_20px_rgba(29,185,84,0.4)] z-10">
+                    <i class="fas fa-play text-2xl pl-1 js-play-icon"></i>
+                </div>
+                
+                <i class="fas fa-step-forward text-white text-3xl"></i>
+                <i class="fas fa-sync-alt text-white/70 text-lg"></i>
+            </div>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur-xl rounded-[1.25rem] p-4 border border-white/20 shadow-2xl shrink-0">
+            <div class="grid grid-cols-2 gap-2 text-[10px] mb-4">
+                <div class="flex flex-col bg-black/20 p-2 rounded-lg">
+                    <span class="text-white/50 font-medium mb-0.5 uppercase tracking-tighter"><i class="far fa-calendar-alt mr-1"></i> Cuándo</span>
+                    <span class="font-bold text-xs">Sábado 28 Oct.</span>
+                </div>
+                <div class="flex flex-col bg-black/20 p-2 rounded-lg">
+                    <span class="text-white/50 font-medium mb-0.5 uppercase tracking-tighter"><i class="far fa-clock mr-1"></i> Hora</span>
+                    <span class="font-bold text-xs">8:00 PM</span>
+                </div>
+                <div class="flex flex-col col-span-2 bg-black/20 p-2 rounded-lg">
+                    <span class="text-white/50 font-medium mb-0.5 uppercase tracking-tighter"><i class="fas fa-map-marker-alt mr-1"></i> Dónde</span>
+                    <span class="font-bold text-xs">Salón "La Fiesta" (Centro)</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <a href="#" class="flex items-center justify-center w-full bg-[#1db954] hover:bg-[#1ed760] text-black font-bold py-2.5 rounded-full text-xs transition duration-300 shadow-lg shadow-green-500/10">
+                    <i class="fab fa-waze text-xl mr-2"></i> Llegar con Waze
+                </a>
+                <a href="#" class="flex items-center justify-center w-full bg-transparent border border-white/30 hover:bg-white/10 text-white font-bold py-2.5 rounded-full text-xs transition duration-300">
+                    <i class="fab fa-whatsapp text-xl mr-2"></i> Confirmar Asistencia
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VISTA ESCRITORIO -->
+    <!-- ========================================== -->
+    <div id="desktop-view" class="hidden md:flex flex-col h-full w-full relative z-20 bg-desktop-magenta overflow-hidden">
+        
+        <div class="w-full flex justify-between items-center px-10 py-8 text-white/70 text-xs font-bold tracking-[0.2em] uppercase absolute top-0 left-0 w-full z-10">
+            <i class="fas fa-chevron-down text-xl cursor-pointer hover:text-white transition"></i>
+            <span>Playing from playlist</span>
+            <i class="fas fa-ellipsis-h text-xl cursor-pointer hover:text-white transition"></i>
+        </div>
+
+        <div class="flex-1 flex items-center justify-center pb-24">
+            <div class="w-80 h-80 xl:w-96 xl:h-96 rounded-xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-all duration-500 js-cover-art group relative">
+                <img src="https://images.unsplash.com/photo-1590627339432-16bcfcec24c7?q=80&w=928&auto=format&fit=crop" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="absolute bottom-0 left-0 w-full px-10 pb-8 flex flex-col">
+            <div class="flex justify-between items-end mb-6 w-full relative">
+                <div class="flex flex-col text-white">
+                    <h1 class="text-3xl lg:text-4xl font-bold tracking-tight mb-2">¡Mi Cumpleaños! 🎂</h1>
+                    <p class="text-sm font-medium text-white/80 mb-1">Sábado 28 de Oct. • 8:00 PM</p>
+                    <p class="text-sm font-medium text-white/80 mb-4 flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Salón "La Fiesta", Centro</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="bg-black/20 hover:bg-black/40 border border-white/20 backdrop-blur-md text-white text-xs font-semibold py-1.5 px-4 rounded-full flex items-center transition">Llegar con Waze</a>
+                        <a href="#" class="bg-black/20 hover:bg-black/40 border border-white/20 backdrop-blur-md text-white text-xs font-semibold py-1.5 px-4 rounded-full flex items-center transition">Confirmar</a>
+                    </div>
+                </div>
+                <i class="far fa-heart text-2xl text-white/70 hover:text-white cursor-pointer absolute right-0 bottom-4"></i>
+            </div>
+
+            <div class="flex items-center gap-4 text-xs font-mono font-medium text-white/60 w-full mb-6">
+                <span class="js-current-time">0:00</span>
+                <div class="flex-1 h-1 bg-white/30 rounded-full relative overflow-hidden">
+                    <div class="h-full bg-white w-0 rounded-full transition-all duration-300 js-progress-bar"></div>
+                </div>
+                <span class="js-total-time">0:00</span>
+            </div>
+
+            <div class="flex items-center justify-center gap-8 text-white w-full relative">
+                <i class="fas fa-random text-lg text-white/70"></i>
+                <i class="fas fa-step-backward text-xl"></i>
+                <div onclick="togglePlayPause()" class="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center cursor-pointer shadow-lg">
+                    <i class="fas fa-play text-xl pl-1 js-play-icon"></i>
+                </div>
+                <i class="fas fa-step-forward text-xl"></i>
+                <i class="fas fa-sync-alt text-lg text-white/70"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Container -->
+    <div id="audio-container" class="absolute -top-[9999px] -left-[9999px] w-[1px] h-[1px]"></div>
+
+    <script>
+        const playIcons = document.querySelectorAll('.js-play-icon');
+        const progressBars = document.querySelectorAll('.js-progress-bar');
+        const playHints = document.querySelectorAll('.js-play-hint');
+        const currentTimes = document.querySelectorAll('.js-current-time');
+        const totalTimes = document.querySelectorAll('.js-total-time');
+        const coverArts = document.querySelectorAll('.js-cover-art'); 
+        const partyLights = document.getElementById('party-lights');
+
+        let player;
+        let isPlaying = false;
+        let progressInterval;
+        let confettiInterval;
+
+        function formatTime(seconds) {
+            if (isNaN(seconds) || seconds < 0) return "0:00";
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Confeti mejorado
+        function fireConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#1db954', '#ffffff', '#e94057', '#6617cb'],
+                zIndex: 100 // Asegurar que el confeti se vea sobre todo
+            });
+        }
+
+        function startPartyEffects() {
+            partyLights.style.display = 'block';
+            fireConfetti();
+            confettiInterval = setInterval(() => {
+                if (isPlaying) fireConfetti();
+            }, 3000);
+        }
+
+        function stopPartyEffects() {
+            partyLights.style.display = 'none';
+            clearInterval(confettiInterval);
+        }
+
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('audio-container', {
+                height: '1',
+                width: '1',
+                videoId: 'GDW-5Lsed24',
+                playerVars: { 'autoplay': 0, 'controls': 0, 'playsinline': 1, 'loop': 1, 'playlist': 'GDW-5Lsed24' },
+                events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }
+            });
+        }
+
+        function onPlayerReady(event) {
+            setTimeout(() => {
+                const duration = player.getDuration();
+                if (duration > 0) totalTimes.forEach(el => el.textContent = formatTime(duration));
+            }, 1500);
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                playIcons.forEach(icon => { icon.classList.remove('fa-play', 'pl-1'); icon.classList.add('fa-pause'); });
+                playHints.forEach(hint => hint.style.display = 'none');
+                coverArts.forEach(art => art.classList.add('neon-pulse'));
+                progressInterval = setInterval(updateProgress, 500);
+                startPartyEffects();
+            } else {
+                isPlaying = false;
+                playIcons.forEach(icon => { icon.classList.remove('fa-pause'); icon.classList.add('fa-play', 'pl-1'); });
+                coverArts.forEach(art => art.classList.remove('neon-pulse'));
+                clearInterval(progressInterval); 
+                stopPartyEffects();
+            }
+        }
+
+        function updateProgress() {
+            if (player && isPlaying) {
+                const currentTime = player.getCurrentTime();
+                const duration = player.getDuration();
+                if (duration > 0) {
+                    const progress = (currentTime / duration) * 100;
+                    progressBars.forEach(bar => bar.style.width = `${progress}%`);
+                    currentTimes.forEach(el => el.textContent = formatTime(currentTime));
+                }
+            }
+        }
+
+        function togglePlayPause() {
+            if (player && typeof player.getPlayerState === 'function') {
+                if (isPlaying) player.pauseVideo();
+                else player.playVideo();
+            }
+        }
+    </script>
+</body>
+</html>

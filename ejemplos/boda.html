@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentina & Mateo - Nuestra Boda</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%23C5A059%22><path d=%22M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z%22/></svg>" type="image/svg+xml">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fuentes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .font-sans { font-family: 'Montserrat', sans-serif; }
+        
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sepia-filter { filter: sepia(0.2); }
+        .hover-scale { transition: transform 0.7s ease; }
+        .group:hover .hover-scale { transform: scale(1.1); }
+        
+        /* Contenedor invisible para YouTube */
+        #youtube-player-container {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Animación de Ondas Musicales (Ripple Effect) */
+        .music-playing-ring {
+            position: absolute;
+            border: 2px solid #C5A059;
+            border-radius: 50%;
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .playing-animation .music-playing-ring {
+            display: block;
+            animation: ripple 2s infinite;
+        }
+
+        .playing-animation .music-playing-ring:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(2.2); opacity: 0; }
+        }
+
+        /* Rotación suave del ícono */
+        .playing-animation #music-icon {
+            animation: slow-rotate 4s linear infinite;
+        }
+
+        @keyframes slow-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hidden-content { display: none; }
+    </style>
+</head>
+<body class="min-h-screen bg-[#FDFBF7] font-sans text-[#8C7B6C] selection:bg-[#E6DCC8] selection:text-[#5D4E46]">
+
+    <!-- YouTube Player (Invisible) -->
+    <div id="youtube-player-container">
+        <div id="player"></div>
+    </div>
+    
+    <!-- Botón de Música con Ondas -->
+    <div class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14" id="music-btn-container">
+        <div class="music-playing-ring"></div>
+        <div class="music-playing-ring"></div>
+        <button id="music-btn" class="relative z-10 p-4 rounded-full bg-[#5D4E46] text-[#FDFBF7] shadow-xl hover:bg-[#42362F] transition-all duration-300 border border-[#C5A059] hover:scale-110 cursor-pointer flex items-center justify-center" title="Reproducir música">
+            <i data-lucide="music" id="music-icon" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-90 sepia-[.3] brightness-110">
+                <source src="https://cdn.pixabay.com/video/2023/11/13/189020-884234925_large.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-[#42362F]/60"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-4 fade-in-up">
+            <p class="text-lg md:text-xl tracking-[0.3em] uppercase mb-4 text-[#F3EFE6]">Nos Casamos</p>
+            <h1 class="font-serif text-6xl md:text-8xl mb-6 italic text-[#FFF] drop-shadow-sm">Valentina & Mateo</h1>
+            <div class="flex items-center justify-center gap-4 text-sm md:text-lg tracking-widest font-light text-[#F3EFE6]">
+                <span>MAYO</span>
+                <div class="w-12 h-[1px] bg-[#C5A059]"></div>
+                <span class="text-3xl font-serif text-white">01</span>
+                <div class="w-12 h-[1px] bg-[#C5A059]"></div>
+                <span>2026</span>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce text-[#F3EFE6]/80">
+            <span class="text-xs tracking-widest uppercase">Desliza hacia abajo</span>
+        </div>
+    </header>
+
+    <!-- Quote Section -->
+    <section class="py-20 px-6 text-center max-w-2xl mx-auto">
+        <i data-lucide="heart" class="w-6 h-6 mx-auto mb-6 text-[#C5A059]"></i>
+        <p class="font-serif text-2xl md:text-3xl text-[#5D4E46] italic leading-relaxed">
+            "El amor no consiste en mirarse el uno al otro, sino en mirar juntos en la misma dirección."
+        </p>
+        <p class="mt-4 text-[#A89F91] text-sm tracking-widest uppercase">— Antoine de Saint-Exupéry</p>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="bg-[#F3EFE6] py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="font-serif text-3xl text-[#5D4E46] mb-10 italic">Cuenta Regresiva</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto" id="countdown">
+                <div class="bg-[#FDFBF7] p-6 rounded-sm shadow-sm border border-[#E6DCC8]">
+                    <span id="days" class="block text-4xl md:text-5xl font-serif text-[#5D4E46] mb-2">00</span>
+                    <span class="text-xs uppercase tracking-widest text-[#A89F91]">Días</span>
+                </div>
+                <div class="bg-[#FDFBF7] p-6 rounded-sm shadow-sm border border-[#E6DCC8]">
+                    <span id="hours" class="block text-4xl md:text-5xl font-serif text-[#5D4E46] mb-2">00</span>
+                    <span class="text-xs uppercase tracking-widest text-[#A89F91]">Horas</span>
+                </div>
+                <div class="bg-[#FDFBF7] p-6 rounded-sm shadow-sm border border-[#E6DCC8]">
+                    <span id="minutes" class="block text-4xl md:text-5xl font-serif text-[#5D4E46] mb-2">00</span>
+                    <span class="text-xs uppercase tracking-widest text-[#A89F91]">Minutos</span>
+                </div>
+                <div class="bg-[#FDFBF7] p-6 rounded-sm shadow-sm border border-[#E6DCC8]">
+                    <span id="seconds" class="block text-4xl md:text-5xl font-serif text-[#5D4E46] mb-2">00</span>
+                    <span class="text-xs uppercase tracking-widest text-[#A89F91]">Segundos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl text-[#5D4E46] mb-4 italic">Detalles del Evento</h2>
+                <p class="text-[#8C7B6C]">Acompáñanos en nuestro día especial</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Ceremonia -->
+                <div class="text-center group cursor-pointer">
+                    <div class="w-full h-64 overflow-hidden mb-6 relative">
+                        <img src="https://images.pexels.com/photos/14703685/pexels-photo-14703685.jpeg" alt="Ceremonia" class="w-full h-full object-cover sepia-filter hover-scale" />
+                        <div class="absolute inset-0 bg-[#42362F]/10 group-hover:bg-[#42362F]/0 transition duration-500"></div>
+                    </div>
+                    <h3 class="font-serif text-2xl mb-2 text-[#5D4E46]">La Ceremonia</h3>
+                    <div class="flex justify-center items-center gap-2 text-[#8C7B6C] mb-1">
+                        <i data-lucide="clock" class="w-4 h-4 text-[#C5A059]"></i>
+                        <span>4:00 PM</span>
+                    </div>
+                    <div class="flex justify-center items-center gap-2 text-[#8C7B6C] mb-4">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-[#C5A059]"></i>
+                        <span>Catedral de Santa María</span>
+                    </div>
+                    <button class="px-6 py-2 border border-[#5D4E46] text-[#5D4E46] text-sm uppercase tracking-widest hover:bg-[#5D4E46] hover:text-[#F3EFE6] transition duration-300">
+                        Ver Mapa
+                    </button>
+                </div>
+
+                <!-- Recepción -->
+                <div class="text-center group cursor-pointer">
+                    <div class="w-full h-64 overflow-hidden mb-6 relative">
+                        <img src="https://images.pexels.com/photos/12889989/pexels-photo-12889989.jpeg" alt="Recepción" class="w-full h-full object-cover sepia-filter hover-scale" />
+                        <div class="absolute inset-0 bg-[#42362F]/10 group-hover:bg-[#42362F]/0 transition duration-500"></div>
+                    </div>
+                    <h3 class="font-serif text-2xl mb-2 text-[#5D4E46]">La Recepción</h3>
+                    <div class="flex justify-center items-center gap-2 text-[#8C7B6C] mb-1">
+                        <i data-lucide="clock" class="w-4 h-4 text-[#C5A059]"></i>
+                        <span>6:30 PM</span>
+                    </div>
+                    <div class="flex justify-center items-center gap-2 text-[#8C7B6C] mb-4">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-[#C5A059]"></i>
+                        <span>Hacienda Las Nubes</span>
+                    </div>
+                    <button class="px-6 py-2 border border-[#5D4E46] text-[#5D4E46] text-sm uppercase tracking-widest hover:bg-[#5D4E46] hover:text-[#F3EFE6] transition duration-300">
+                        Ver Mapa
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-12">
+                <i data-lucide="camera" class="w-6 h-6 mx-auto mb-4 text-[#C5A059]"></i>
+                <h2 class="font-serif text-4xl text-[#5D4E46] italic">Nuestra Historia</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 h-96 md:h-[500px]">
+                <div class="col-span-2 row-span-2 relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition duration-500 group-hover:scale-105 filter grayscale sepia-[.3] group-hover:filter-none">
+                </div>
+                <div class="col-span-1 row-span-1 relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition duration-500 group-hover:scale-105 filter grayscale sepia-[.3] group-hover:filter-none">
+                </div>
+                <div class="col-span-1 row-span-2 relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition duration-500 group-hover:scale-105 filter grayscale sepia-[.3] group-hover:filter-none">
+                </div>
+                <div class="col-span-1 row-span-1 relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition duration-500 group-hover:scale-105 filter grayscale sepia-[.3] group-hover:filter-none">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info & Dress Code -->
+    <section class="py-20 px-4 bg-[#F3EFE6]">
+        <div class="container mx-auto max-w-4xl grid md:grid-cols-2 gap-8 items-center">
+            <!-- Tarjeta Código de Vestimenta -->
+            <div class="bg-[#FDFBF7] p-10 shadow-sm border border-[#E6DCC8] text-center">
+                <h3 class="font-serif text-2xl text-[#5D4E46] mb-6 italic">Código de Vestimenta</h3>
+                <div class="mb-4 text-[#8C7B6C] font-semibold tracking-wide uppercase">Etiqueta Rigurosa</div>
+                <p class="text-[#8C7B6C] text-sm leading-relaxed mb-4">
+                    Ellas: Vestido largo de noche.<br/>
+                    Ellos: Smoking o traje oscuro.
+                </p>
+                <p class="text-xs text-[#C5A059] italic">
+                    Reservado el color blanco para la novia.
+                </p>
+            </div>
+            
+            <!-- Tarjeta Regalos -->
+            <div class="bg-[#5D4E46] text-[#F3EFE6] p-10 text-center shadow-lg">
+                <h3 class="font-serif text-2xl text-[#FDFBF7] mb-6 italic">Mesa de Regalos</h3>
+                <p class="text-sm leading-relaxed mb-6 opacity-90">
+                    Su presencia es nuestro mayor regalo. Sin embargo, si desean tener un detalle con nosotros, hemos dispuesto una mesa de regalos.
+                </p>
+                <button class="text-xs uppercase tracking-widest border-b border-[#C5A059] pb-1 hover:text-[#C5A059] hover:border-[#FDFBF7] transition text-[#FDFBF7]">
+                    Ver opciones
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="py-24 px-4 bg-[#FDFBF7] relative">
+        <div class="container mx-auto max-w-xl text-center">
+            <h2 class="font-serif text-4xl text-[#5D4E46] mb-2 italic">Confirmar Asistencia</h2>
+            <p class="text-[#8C7B6C] mb-10">Esperamos contar con tu presencia el 1 de Mayo.</p>
+
+            <form id="rsvp-form" class="bg-white p-8 md:p-12 shadow-xl border-t-4 border-[#5D4E46]">
+                <div class="space-y-6 text-left">
+                    <div>
+                        <label htmlFor="name" class="block text-xs uppercase tracking-widest text-[#A89F91] mb-2">Nombre Completo</label>
+                        <input type="text" id="name" placeholder="Escribe tu nombre aquí" class="w-full border-b border-[#E6DCC8] py-3 text-[#5D4E46] focus:outline-none focus:border-[#5D4E46] transition bg-transparent" required />
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-[#A89F91] mb-3">Restricciones Alimentarias</label>
+                        <input type="text" id="dietary" placeholder="Opcional" class="w-full border-b border-[#E6DCC8] py-3 text-[#5D4E46] focus:outline-none focus:border-[#5D4E46] transition bg-transparent" />
+                    </div>
+                    <button type="submit" class="w-full bg-[#5D4E46] text-[#FDFBF7] py-4 mt-4 uppercase tracking-[0.2em] text-xs hover:bg-[#42362F] transition duration-300">
+                        Confirmar Asistencia
+                    </button>
+                </div>
+            </form>
+
+            <div id="rsvp-success" class="hidden-content bg-white p-12 shadow-xl border-t-4 border-[#5D4E46] fade-in-up">
+                <i data-lucide="check" class="w-12 h-12 mx-auto mb-6 text-[#5D4E46]"></i>
+                <h3 class="font-serif text-3xl text-[#5D4E46] mb-4 italic">¡Gracias, <span id="guest-name"></span>!</h3>
+                <p class="text-[#8C7B6C]">Hemos recibido tu confirmación correctamente.</p>
+                <button onclick="resetForm()" class="mt-8 text-xs text-[#C5A059] underline">Enviar otra respuesta</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#42362F] text-[#A89F91] py-12 text-center">
+        <h2 class="font-serif text-3xl text-[#FDFBF7] mb-2 italic">V & M</h2>
+        <p class="text-xs uppercase tracking-widest">1 de Mayo, 2026</p>
+        <p class="text-[10px] mt-4 opacity-40">Grecia, Costa Rica</p>
+    </footer>
+
+    <!-- Lógica de YouTube API -->
+    <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        var musicBtn = document.getElementById('music-btn');
+        var musicBtnContainer = document.getElementById('music-btn-container');
+        var musicIcon = document.getElementById('music-icon');
+        var isPlaying = false;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0',
+                width: '0',
+                videoId: 'YpYQh7eQULc',
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': 'YpYQh7eQULc'
+                },
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                updateIcon('volume-2');
+                musicBtnContainer.classList.add('playing-animation');
+            } else {
+                isPlaying = false;
+                updateIcon('music');
+                musicBtnContainer.classList.remove('playing-animation');
+            }
+        }
+
+        function updateIcon(iconName) {
+            musicIcon.setAttribute('data-lucide', iconName);
+            lucide.createIcons();
+        }
+
+        musicBtn.addEventListener('click', () => {
+            if (!player) return;
+            if (isPlaying) {
+                player.pauseVideo();
+            } else {
+                player.playVideo();
+            }
+        });
+
+        // Inicializar Iconos
+        lucide.createIcons();
+
+        // Cuenta Regresiva
+        const targetDate = new Date('2026-05-01T16:00:00');
+        function updateTimer() {
+            const now = new Date();
+            const difference = targetDate.getTime() - now.getTime();
+            if (difference > 0) {
+                document.getElementById('days').textContent = String(Math.floor(difference / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById('hours').textContent = String(Math.floor((difference / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(Math.floor((difference / 1000 / 60) % 60)).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(Math.floor((difference / 1000) % 60)).padStart(2, '0');
+            }
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // RSVP Lógica
+        const form = document.getElementById('rsvp-form');
+        const successDiv = document.getElementById('rsvp-success');
+        const nameInput = document.getElementById('name');
+        
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('guest-name').textContent = nameInput.value;
+            form.style.display = 'none';
+            successDiv.style.display = 'block';
+        });
+
+        function resetForm() {
+            form.reset();
+            form.style.display = 'block';
+            successDiv.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
